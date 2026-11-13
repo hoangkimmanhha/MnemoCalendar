@@ -1,0 +1,5 @@
+{
+  "theme": "default",
+  "chema": "schema.sql",
+  "database": "mnemoCal.db"
+}
