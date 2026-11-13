@@ -1,0 +1,181 @@
+[
+  {
+    "title": "Họp khởi động đồ án MnemoCalendar",
+    "startAt": "2026-11-14T08:30:00+07:00",
+    "endAt": "2026-11-14T10:00:00+07:00",
+    "location": "Phòng B1.04 - Cơ sở 1",
+    "description": "Chốt kiến trúc MVVM, database schema và chia task trên GitHub.",
+    "colorHex": "#3B82F6",
+    "tags": [
+      {
+        "name": "Học tập",
+        "colorHex": "#10B981"
+      },
+      {
+        "name": "Đồ án",
+        "colorHex": "#6366F1"
+      }
+    ],
+    "createdAtUtc": "2026-11-13T12:00:00Z",
+    "updatedAtUtc": "2026-11-13T12:00:00Z"
+  },
+  {
+    "title": "Đi siêu thị mua đồ ăn tuần",
+    "startAt": "2026-11-14T17:30:00+07:00",
+    "endAt": "2026-11-14T18:45:00+07:00",
+    "location": "Co.opmart",
+    "description": null,
+    "colorHex": "#F59E0B",
+    "tags": [
+      {
+        "name": "Cá nhân",
+        "colorHex": "#F59E0B"
+      }
+    ],
+    "createdAtUtc": "2026-11-13T12:05:00Z",
+    "updatedAtUtc": "2026-11-13T12:05:00Z"
+  },
+  {
+    "title": "Code tính năng SqliteEventRepository",
+    "startAt": "2026-11-15T09:00:00+07:00",
+    "endAt": "2026-11-15T11:30:00+07:00",
+    "location": null,
+    "description": "Hoàn thiện CRUD và viết unit test seed dữ liệu.",
+    "colorHex": null,
+    "tags": [
+      {
+        "name": "Đồ án",
+        "colorHex": "#6366F1"
+      },
+      {
+        "name": "Code",
+        "colorHex": "#EC4899"
+      }
+    ],
+    "createdAtUtc": "2026-11-13T12:10:00Z",
+    "updatedAtUtc": "2026-11-13T12:10:00Z"
+  },
+  {
+    "title": "Chạy bộ công viên",
+    "startAt": "2026-11-15T16:30:00+07:00",
+    "endAt": "2026-11-15T17:30:00+07:00",
+    "location": "Công viên Gia Định",
+    "description": null,
+    "colorHex": "#10B981",
+    "tags": [
+      {
+        "name": "Sức khỏe",
+        "colorHex": "#14B8A6"
+      }
+    ],
+    "createdAtUtc": "2026-11-13T12:15:00Z",
+    "updatedAtUtc": "2026-11-13T12:15:00Z"
+  },
+  {
+    "title": "Nộp báo cáo tiến độ tuần 1",
+    "startAt": "2026-11-16T20:00:00+07:00",
+    "endAt": "2026-11-16T21:00:00+07:00",
+    "location": "Online - MS Teams",
+    "description": "Gửi link PR và file schema.sql cho giảng viên.",
+    "colorHex": "#EF4444",
+    "tags": [
+      {
+        "name": "Học tập",
+        "colorHex": "#10B981"
+      },
+      {
+        "name": "Quan trọng",
+        "colorHex": "#EF4444"
+      }
+    ],
+    "createdAtUtc": "2026-11-13T12:20:00Z",
+    "updatedAtUtc": "2026-11-13T12:20:00Z"
+  },
+  {
+    "title": "Sự kiện chưa gắn tag (Test filter Untagged)",
+    "startAt": "2026-11-17T10:00:00+07:00",
+    "endAt": "2026-11-17T11:00:00+07:00",
+    "location": null,
+    "description": null,
+    "colorHex": null,
+    "tags": [],
+    "createdAtUtc": "2026-11-13T12:25:00Z",
+    "updatedAtUtc": "2026-11-13T12:25:00Z"
+  },
+  {
+    "title": "Cà phê trao đổi UI WPF",
+    "startAt": "2026-11-18T14:00:00+07:00",
+    "endAt": "2026-11-18T16:00:00+07:00",
+    "location": "Highlands Coffee",
+    "description": "Thống nhất màu sắc và template cho Month View.",
+    "colorHex": "#8B5CF6",
+    "tags": [
+      {
+        "name": "Đồ án",
+        "colorHex": "#6366F1"
+      },
+      {
+        "name": "Cá nhân",
+        "colorHex": "#F59E0B"
+      }
+    ],
+    "createdAtUtc": "2026-11-13T12:30:00Z",
+    "updatedAtUtc": "2026-11-13T12:30:00Z"
+  },
+  {
+    "title": "Ôn tập kiến thức SQLite & Indexing",
+    "startAt": "2026-11-19T19:30:00+07:00",
+    "endAt": "2026-11-19T21:30:00+07:00",
+    "location": null,
+    "description": "Đọc lại tài liệu về composite index start_at_utc, end_at_utc.",
+    "colorHex": null,
+    "tags": [
+      {
+        "name": "Học tập",
+        "colorHex": "#10B981"
+      }
+    ],
+    "createdAtUtc": "2026-11-13T12:35:00Z",
+    "updatedAtUtc": "2026-11-13T12:35:00Z"
+  },
+  {
+    "title": "Khám răng định kỳ",
+    "startAt": "2026-11-20T09:00:00+07:00",
+    "endAt": "2026-11-20T10:30:00+07:00",
+    "location": "Nha khoa Quận 1",
+    "description": null,
+    "colorHex": "#14B8A6",
+    "tags": [
+      {
+        "name": "Sức khỏe",
+        "colorHex": "#14B8A6"
+      },
+      {
+        "name": "Cá nhân",
+        "colorHex": "#F59E0B"
+      }
+    ],
+    "createdAtUtc": "2026-11-13T12:40:00Z",
+    "updatedAtUtc": "2026-11-13T12:40:00Z"
+  },
+  {
+    "title": "Hackathon nội bộ cuối tuần",
+    "startAt": "2026-11-21T08:00:00+07:00",
+    "endAt": "2026-11-22T17:00:00+07:00",
+    "location": "Hội trường A",
+    "description": "Sự kiện kéo dài qua 2 ngày để test điều kiện overlap.",
+    "colorHex": "#EC4899",
+    "tags": [
+      {
+        "name": "Code",
+        "colorHex": "#EC4899"
+      },
+      {
+        "name": "Quan trọng",
+        "colorHex": "#EF4444"
+      }
+    ],
+    "createdAtUtc": "2026-11-13T12:45:00Z",
+    "updatedAtUtc": "2026-11-13T12:45:00Z"
+  }
+]
