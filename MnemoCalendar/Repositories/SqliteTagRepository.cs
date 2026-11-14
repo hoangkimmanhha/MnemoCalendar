@@ -106,7 +106,7 @@ public class SqliteTagRepository: ITagRepository
             @"UPDATE tags
             SET name = $name,
                 name_ascii = $name_ascii,
-                color_hex = color_hex
+                color_hex = $color_hex
             WHERE id = $id";
 
         command.Parameters.AddWithValue("$id", newTag.Id);
