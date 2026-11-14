@@ -10,7 +10,7 @@ public class SqliteEventRepository: IEventRepository
 {
     private readonly string _connectionString;
     
-    public SqliteEventRepository(string db = "database")
+    public SqliteEventRepository(string db = "database.main")
     {
         _connectionString = ConnectionStringBuilder.GetConnectionString(PathHelper.LocalAppData(ConfigReader.Parse(db)!));
     }

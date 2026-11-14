@@ -10,7 +10,7 @@ public class DatabaseInitializer
     /// <summary>
     /// Create database if it doesn't exist
     /// </summary>
-    public static void Initialize(string db = "database")
+    public static void Initialize(string db = "database.main")
     {
         using var connection = new SqliteConnection(ConnectionStringBuilder.GetConnectionString(CreateDBFolder(db)));
         connection.Open();
@@ -34,7 +34,7 @@ public class DatabaseInitializer
     /// Create database folder at "%LOCALAPPDATA%/MnemoCalendar/."
     /// </summary>
     /// <returns>string fullDatabasePath</returns>
-    private static string CreateDBFolder(string db = "database")
+    private static string CreateDBFolder(string db = "database.main")
     {
         Directory.CreateDirectory(PathHelper.LocalAppData()); // Create folder if not exists
 

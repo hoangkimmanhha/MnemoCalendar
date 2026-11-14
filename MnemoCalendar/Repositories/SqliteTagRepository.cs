@@ -9,7 +9,7 @@ public class SqliteTagRepository: ITagRepository
 {
     private readonly string _connectionString;
 
-    public SqliteTagRepository(string db = "database")
+    public SqliteTagRepository(string db = "database.main")
     {
         _connectionString = ConnectionStringBuilder.GetConnectionString(PathHelper.LocalAppData(ConfigReader.Parse(db)!));
     }

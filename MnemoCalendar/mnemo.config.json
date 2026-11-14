@@ -1,6 +1,34 @@
 {
-  "theme": "default",
+  "theme": {
+    "default": {
+      "primary-color": "#0078D4",
+      "secondary-color": "#64748B"
+    },
+    "light": {
+      "primary-color": "#0078D4",
+      "secondary-color": "#475569"
+    },
+    "dark": {
+      "primary-color": "#60CDFF",
+      "secondary-color": "#94A3B8"
+    }
+  },
   "schema": "schema.sql",
-  "database": "mnemoCalendar.db",
-  "test.database": "mnemoCalendar.test.db"
+  "database": {
+    "main": "mnemoCalendar.db",
+    "test": "mnemoCalendar.test.db"
+  },
+  "default": {
+    "tag": {
+      "name": [
+        "Urgent",
+        "Busy",
+        "Work",
+        "Study",
+        "Personal",
+        "Health"
+      ],
+      "color": "#0078D4"
+    }
+  }
 }
