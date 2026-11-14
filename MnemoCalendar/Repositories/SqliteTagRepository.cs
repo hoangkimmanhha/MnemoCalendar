@@ -36,7 +36,7 @@ public class SqliteTagRepository: ITagRepository
         return id;
     }
 
-    public Tag? GetTagByID(long id)
+    public Tag? GetTagById(long id)
     {
         var connection = new SqliteConnection(_connectionString);
         connection.Open();

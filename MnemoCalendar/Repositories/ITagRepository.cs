@@ -13,7 +13,7 @@ public interface ITagRepository
     /// <summary>
     /// Get details of a tag by its id.
     /// </summary>
-    public Tag? GetTagByID(long id);
+    public Tag? GetTagById(long id);
 
     public List<Tag>? GetAllTags();
 
