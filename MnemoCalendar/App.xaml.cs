@@ -1,6 +1,8 @@
 ﻿using System.IO;
+using System.Text;
 using System.Windows;
 using MnemoCalendar.Data;
+using MnemoCalendar.Helpers;
 using MnemoCalendar.Tests;
 
 namespace MnemoCalendar;
@@ -9,21 +11,24 @@ public partial class App : Application
 {
     private void TestInitialize()
     {
-        DatabaseInitializer.Initialize(db: "test.database");
+        Console.OutputEncoding = Encoding.UTF8;
+        Console.InputEncoding = Encoding.UTF8;
+        DatabaseInitializer.Initialize(db: "database.test");
         var tester = new TestDatabase_Seed();
         tester.Test();
     }
 
     private void NormalInitialize()
     {
-        DatabaseInitializer.Initialize();
+        DatabaseInitializer.Initialize(db: "database.main");
     }
 
     protected override void OnStartup(StartupEventArgs e)
     {
         base.OnStartup(e);
 
-        NormalInitialize();
+        // NormalInitialize();
+        TestInitialize();
 
         var mainWindow = new MainWindow();
         mainWindow.Show();

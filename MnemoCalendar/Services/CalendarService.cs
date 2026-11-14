@@ -76,7 +76,7 @@ public class CalendarService
     /// <summary>
     /// Get a CalendarEvent along with its associated Tags by event ID.
     /// </summary>
-    public CalendarEvent? GetEventTagByID(long id)
+    public CalendarEvent? GetEventTagById(long id)
     {
         var eventRepository = new SqliteEventRepository(_db);
         var tagRepository = new SqliteTagRepository(_db);
@@ -97,7 +97,7 @@ public class CalendarService
         {
             long tagId = reader.GetInt32(0);
 
-            var tag = tagRepository.GetTagByID(tagId);
+            var tag = tagRepository.GetTagById(tagId);
             if (tag is not null)
             {
                 calendarEvent.Tags.Add(tag);
