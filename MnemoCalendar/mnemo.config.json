@@ -20,15 +20,27 @@
   },
   "default": {
     "tag": {
-      "name": [
-        "Urgent",
-        "Busy",
-        "Work",
-        "Study",
-        "Personal",
-        "Health"
-      ],
-      "color": "#0078D4"
+      "color": "CornflowerBlue",
+      "items": {
+        "Urgent": "Crimson",
+        "Busy": "Coral",
+        "Work": "DodgerBlue",
+        "Study": "MediumSeaGreen",
+        "Personal": "MediumPurple",
+        "Health": "Teal"
+      }
+    },
+    "colors": {
+      "CornflowerBlue": "#6495ED",
+      "DodgerBlue": "#1E90FF",
+      "Teal": "#008080",
+      "MediumSeaGreen": "#3CB371",
+      "Gold": "#FFD700",
+      "Coral": "#FF7F50",
+      "Crimson": "#DC143C",
+      "HotPink": "#FF69B4",
+      "MediumPurple": "#9370DB",
+      "SlateGray": "#708090"
     }
   }
 }
