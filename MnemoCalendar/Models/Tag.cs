@@ -15,4 +15,12 @@ public class Tag
     /// Optional, default tag color at ./mnemo.config.json/default.tag.color
     /// </summary>
     public string? ColorHex { get; set; }
+
+    public string Info()
+    {
+        return $@"
+Tag: {Name}
+ASCII: {NameAscii}
+Color: {ColorHex}";
+    }
 }
