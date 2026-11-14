@@ -28,7 +28,8 @@ public class SqliteEventRepository: IEventRepository
 
         command.CommandText =
             @"INSERT INTO events(title, description, location, start_at_utc, end_at_utc, color_hex, created_at_utc, updated_at_utc)
-            VALUES ($title, $description, $location, $start_at_utc, $end_at_utc, $color_hex, $created_at_utc, $updated_at_utc)";
+            VALUES ($title, $description, $location, $start_at_utc, $end_at_utc, $color_hex, $created_at_utc, $updated_at_utc);
+            SELECT last_insert_rowid();";
         command.Parameters.AddWithValue("$title", calendarEvent.Title);
         command.Parameters.AddWithValue("$description", calendarEvent.Description ?? (object)DBNull.Value);
         command.Parameters.AddWithValue("$location", calendarEvent.Location ?? (object)DBNull.Value);
