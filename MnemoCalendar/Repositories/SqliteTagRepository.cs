@@ -13,6 +13,10 @@ public class SqliteTagRepository: ITagRepository
     {
         _connectionString = ConnectionStringBuilder.GetConnectionString(PathHelper.LocalAppData(ConfigReader.Parse(db)!));
     }
+
+    /// <summary>
+    /// Create tag if it not exists, and return its id.
+    /// </summary>
     public long CreateTag(Tag tag)
     {
         var connection = new SqliteConnection(_connectionString);
@@ -20,15 +24,15 @@ public class SqliteTagRepository: ITagRepository
 
         var command = connection.CreateCommand();
         command.CommandText =
-            @"INSERT INTO tags (name, name_ascii, color_hex)
+            @"INSERT OR IGNORE INTO tags (name, name_ascii, color_hex)
             VALUES ($name,$name_ascii, $color_hex);
-            SELECT last_insert_rowid();";
+            SELECT id FROM tags WHERE name_ascii = $name_ascii;";
         command.Parameters.AddWithValue("$name", tag.Name);
         command.Parameters.AddWithValue("$name_ascii", tag.NameAscii);
         command.Parameters.AddWithValue("$color_hex", tag.ColorHex ?? (object)DBNull.Value);
 
         long id = Convert.ToInt32(command.ExecuteScalar());
-        // Unique check, color check
+
         return id;
     }
 
