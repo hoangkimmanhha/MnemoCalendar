@@ -28,8 +28,8 @@ public class SqliteTagRepository: ITagRepository
             VALUES ($name,$name_ascii, $color_hex);
             SELECT id FROM tags WHERE name_ascii = $name_ascii;";
         command.Parameters.AddWithValue("$name", tag.Name);
-        command.Parameters.AddWithValue("$name_ascii", tag.NameAscii);
-        command.Parameters.AddWithValue("$color_hex", tag.ColorHex ?? (object)DBNull.Value);
+        command.Parameters.AddWithValue("$name_ascii", StringHelper.RemoveDiacritics(tag.Name));
+        command.Parameters.AddWithValue("$color_hex", StringHelper.ValidateColorHex(tag.ColorHex) ?? ConfigReader.Parse("default.tag.color"));
 
         long id = Convert.ToInt32(command.ExecuteScalar());
 
