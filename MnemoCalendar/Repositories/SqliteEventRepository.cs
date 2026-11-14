@@ -132,6 +132,37 @@ public class SqliteEventRepository: IEventRepository
         }
         else return null;
     }
+
+    public void UpdateEvent(CalendarEvent newCalendarEvent)
+    {
+        using var connection = new SqliteConnection(_connectionString);
+        connection.Open();
+
+        using var command = connection.CreateCommand();
+
+        command.CommandText =
+            @"UPDATE events
+            SET title = $title, 
+                description = $description,
+                location = $location, 
+                start_at_utc = $start_at_utc,
+                end_at_utc = $end_at_utc,
+                color_hex = $color_hex,
+                created_at_utc = $created_at_utc,
+                updated_at_utc = $updated_at_utc);
+            WHERE id = $id;";
+        command.Parameters.AddWithValue("$id", newCalendarEvent.Id);
+        command.Parameters.AddWithValue("$title", newCalendarEvent.Title);
+        command.Parameters.AddWithValue("$description", newCalendarEvent.Description ?? (object)DBNull.Value);
+        command.Parameters.AddWithValue("$location", newCalendarEvent.Location ?? (object)DBNull.Value);
+        command.Parameters.AddWithValue("$start_at_utc", newCalendarEvent.StartAt.UtcDateTime.ToString("O"));
+        command.Parameters.AddWithValue("$end_at_utc", newCalendarEvent.EndAt.UtcDateTime.ToString("O"));
+        command.Parameters.AddWithValue("$color_hex", newCalendarEvent.ColorHex ?? (object)DBNull.Value);
+        command.Parameters.AddWithValue("$created_at_utc", newCalendarEvent.CreatedAtUtc.ToString("O"));
+        command.Parameters.AddWithValue("$updated_at_utc", DateTimeOffset.Now.UtcDateTime.ToString("O"));
+
+        command.ExecuteNonQuery();
+    }
     public void DeleteEvent(long id)
     {
         using var connection = new SqliteConnection(_connectionString);

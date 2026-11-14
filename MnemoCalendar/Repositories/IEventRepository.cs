@@ -13,7 +13,7 @@ public interface IEventRepository
     /// <summary>
     /// Get details of an event by its id.
     /// </summary>
-    public CalendarEvent? GetEventById(long id);
+    public CalendarEvent? GetEventById(long id); 
 
     /// <summary>
     /// Get all events in a given period of time.
@@ -29,4 +29,10 @@ public interface IEventRepository
     /// Permanently delete an event (and its related records).
     /// </summary>
     public void DeleteEvent(long id);
+
+    /// <summary>
+    /// Update details of an event (except for it Tag list). Overwrite information to exist CalendarEvent.Id.
+    /// </summary>
+    /// <param name="id"></param>
+    public void UpdateEvent(CalendarEvent newCalendarEvent);
 }

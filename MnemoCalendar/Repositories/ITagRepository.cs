@@ -18,6 +18,11 @@ public interface ITagRepository
     public List<Tag>? GetAllTags();
 
     /// <summary>
+    /// Update details of an Tag (only update Name and ColorHex).
+    /// </summary>
+    public void UpdateTag(Tag newTag);
+
+    /// <summary>
     /// Permanently delete a tag, but does not delete its correspond events.
     /// </summary>
     public void DeleteTag(long id);

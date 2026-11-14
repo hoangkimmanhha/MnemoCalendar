@@ -95,6 +95,28 @@ public class SqliteTagRepository: ITagRepository
         }
     }
 
+    public void UpdateTag(Tag newTag)
+    {
+        var connection = new SqliteConnection(_connectionString);
+        connection.Open();
+
+        var command = connection.CreateCommand();
+
+        command.CommandText =
+            @"UPDATE tags
+            SET name = $name,
+                name_ascii = $name_ascii,
+                color_hex = color_hex
+            WHERE id = $id";
+
+        command.Parameters.AddWithValue("$id", newTag.Id);
+        command.Parameters.AddWithValue("$name", newTag.Name);
+        command.Parameters.AddWithValue("$name_ascii", newTag.NameAscii);
+        command.Parameters.AddWithValue("$color_hex", newTag.ColorHex);
+
+        command.ExecuteNonQuery();
+    }
+
     public void DeleteTag(long id)
     {
         var connection = new SqliteConnection(_connectionString);
