@@ -20,7 +20,6 @@ public class SqliteEventRepository: IEventRepository
     /// <returns>long Id</returns>
     public long CreateEvent(CalendarEvent calendarEvent)
     {
-        Console.WriteLine(_connectionString);
         using var connection = new SqliteConnection(_connectionString);
         connection.Open();
 
