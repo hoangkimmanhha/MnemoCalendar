@@ -29,7 +29,7 @@ public class SqliteTagRepository: ITagRepository
             SELECT id FROM tags WHERE name_ascii = $name_ascii;";
         command.Parameters.AddWithValue("$name", tag.Name);
         command.Parameters.AddWithValue("$name_ascii", StringHelper.RemoveDiacritics(tag.Name));
-        command.Parameters.AddWithValue("$color_hex", StringHelper.ValidateColorHex(tag.ColorHex) ?? ConfigReader.Parse("default.tag.color"));
+        command.Parameters.AddWithValue("$color_hex", ColorHelper.ColorHexCode(tag.ColorHex) ?? ConfigReader.Parse("default.tag.color"));
 
         long id = Convert.ToInt32(command.ExecuteScalar());
 
