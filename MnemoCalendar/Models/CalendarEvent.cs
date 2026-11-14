@@ -2,6 +2,9 @@
 
 public class CalendarEvent
 {
+    /// <summary>
+    /// Leave blank if create new Tag (autoincrement).
+    /// </summary>
     public long Id { get; set; }
     public string Title { get; set; } = string.Empty;
     public DateTimeOffset StartAt { get; set; }

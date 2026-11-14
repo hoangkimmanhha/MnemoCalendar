@@ -28,11 +28,12 @@ public static class StringHelper
 			.Replace('Đ', 'D')
 			.Normalize(NormalizationForm.FormC);
 	}
-	public static bool ColorStringCheck(string hex_color)
-	{
-        var str = hex_color.Trim();
-        if (str.Length != 7 || str[0] != '#') return false;
+    public static string? ValidateColorHex(string? hexColor)
+    {
+        if (string.IsNullOrWhiteSpace(hexColor)) return null;
+        var str = hexColor.Trim();
+        if (str.Length != 7 || str[0] != '#') return null;
 
-        return str.Skip(1).All(char.IsAsciiHexDigit);
+        return str.Skip(1).All(char.IsAsciiHexDigit) ? str : null;
     }
 }

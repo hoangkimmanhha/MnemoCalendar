@@ -4,6 +4,9 @@ using System.Text.Json.Nodes;
 namespace MnemoCalendar.Helpers;
 public static class ConfigReader
 {    
+    /// <summary>
+    /// Read the .config file and return specified data.
+    /// </summary>
     public static string? Parse(string toParse){
         string jsonString = File.ReadAllText(PathHelper.BaseDirectory("mnemo.config.json"));
         JsonNode? root = JsonNode.Parse(jsonString);
