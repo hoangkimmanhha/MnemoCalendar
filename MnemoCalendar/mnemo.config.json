@@ -1,0 +1,46 @@
+{
+  "theme": {
+    "default": {
+      "primary-color": "#0078D4",
+      "secondary-color": "#64748B"
+    },
+    "light": {
+      "primary-color": "#0078D4",
+      "secondary-color": "#475569"
+    },
+    "dark": {
+      "primary-color": "#60CDFF",
+      "secondary-color": "#94A3B8"
+    }
+  },
+  "schema": "schema.sql",
+  "database": {
+    "main": "mnemoCalendar.db",
+    "test": "mnemoCalendar.test.db"
+  },
+  "default": {
+    "tag": {
+      "color": "CornflowerBlue",
+      "items": {
+        "Urgent": "Crimson",
+        "Busy": "Coral",
+        "Work": "DodgerBlue",
+        "Study": "MediumSeaGreen",
+        "Personal": "MediumPurple",
+        "Health": "Teal"
+      }
+    },
+    "colors": {
+      "CornflowerBlue": "#6495ED",
+      "DodgerBlue": "#1E90FF",
+      "Teal": "#008080",
+      "MediumSeaGreen": "#3CB371",
+      "Gold": "#FFD700",
+      "Coral": "#FF7F50",
+      "Crimson": "#DC143C",
+      "HotPink": "#FF69B4",
+      "MediumPurple": "#9370DB",
+      "SlateGray": "#708090"
+    }
+  }
+}

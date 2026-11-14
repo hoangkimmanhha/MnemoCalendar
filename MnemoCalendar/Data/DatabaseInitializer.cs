@@ -1,27 +1,41 @@
 using System.IO;
 using System.Windows;
 using Microsoft.Data.Sqlite;
+using MnemoCalendar.Helpers;
+using MnemoCalendar.Repositories;
+using MnemoCalendar.Models;
 
 namespace MnemoCalendar.Data;
 
 public class DatabaseInitializer
 {
     /// <summary>
-    /// Create database if it doesn't exist
+    /// Create database if it doesn't exist, then add default tags.
     /// </summary>
-    public static void Initialize()
+    public static void Initialize(string db = "database.main")
     {
-        using var connection = new SqliteConnection(ConnectionStringBuilder.GetConnectionString(GetDBPath()));
+        using var connection = new SqliteConnection(ConnectionStringBuilder.GetConnectionString(CreateDBFolder(db)));
         connection.Open();
 
         using var command = connection.CreateCommand();
         command.CommandText = File.ReadAllText(GetSchemaPath());
         command.ExecuteNonQuery();
+
+        // Add default tags.
+        var sqliteTagRepository = new SqliteTagRepository(db);
+        foreach (var (name, color) in ConfigReader.ParseDictionary("default.tag.items"))
+        {
+            sqliteTagRepository.CreateTag(new Tag
+            {
+                Name = name,
+                ColorHex = color
+            });
+        }
     }
 
     private static string GetSchemaPath()
     {
-        string schemaPath = Path.Combine(AppContext.BaseDirectory, "Data", "schema.sql");
+        string schemaPath = PathHelper.BaseDirectory("Data", ConfigReader.Parse("schema")!);
         if (!File.Exists(schemaPath))
         {
             throw new FileNotFoundException("Cannot found schema file at: ", schemaPath);
@@ -29,13 +43,14 @@ public class DatabaseInitializer
 
         return schemaPath;
     }
-    public static string GetDBPath()
+    /// <summary>
+    /// Create database folder at "%LOCALAPPDATA%/MnemoCalendar/."
+    /// </summary>
+    /// <returns>string fullDatabasePath</returns>
+    private static string CreateDBFolder(string db = "database.main")
     {
-        // Database file will be saved and used at "%LOCALAPPDATA%/MnemoCalendar/mnemocal.db"
-        var appDataFolder = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
-        var dbFolder = Path.Combine(appDataFolder, "MnemoCalendar");
-        Directory.CreateDirectory(dbFolder); // Create folder if not exists
+        Directory.CreateDirectory(PathHelper.LocalAppData()); // Create folder if not exists
 
-        return Path.Combine(dbFolder, "mnemoCld.db");
+        return PathHelper.LocalAppData(ConfigReader.Parse(db)!);
     }
 }

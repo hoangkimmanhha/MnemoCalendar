@@ -1,0 +1,17 @@
+using System.IO;
+
+namespace MnemoCalendar.Helpers;
+
+public static class PathHelper
+{
+    /// <returns>string "%LOCALAPPDATA%/MnemoCalendar/"</returns>
+    public static string LocalAppData(params string[] paths)
+    {
+        return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "MnemoCalendar", Path.Combine(paths));
+    }
+    /// <returns>string workingDirectory</returns>
+    public static string BaseDirectory(params string[] paths)
+    {
+        return Path.Combine(AppContext.BaseDirectory, Path.Combine(paths));
+    }
+}

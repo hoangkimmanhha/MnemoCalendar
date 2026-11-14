@@ -1,0 +1,348 @@
+[
+  {
+    "title": "Họp khởi động đồ án MnemoCalendar",
+    "startAt": "2026-11-14T08:30:00+07:00",
+    "endAt": "2026-11-14T10:00:00+07:00",
+    "location": "Phòng B1.04 - Cơ sở 1",
+    "description": "Chốt kiến trúc MVVM, database schema và chia task trên GitHub.",
+    "colorHex": "#3B82F6",
+    "tags": [
+      {
+        "name": "Work",
+        "colorHex": null
+      },
+      {
+        "name": "Đồ án",
+        "colorHex": "#6366F1"
+      }
+    ]
+  },
+  {
+    "title": "Đi siêu thị mua đồ ăn tuần",
+    "startAt": "2026-11-14T17:30:00+07:00",
+    "endAt": "2026-11-14T18:45:00+07:00",
+    "location": "Co.opmart",
+    "description": null,
+    "colorHex": "#F59E0B",
+    "tags": [
+      {
+        "name": "Personal",
+        "colorHex": null
+      },
+      {
+        "name": "Tài chính",
+        "colorHex": "Gold"
+      }
+    ]
+  },
+  {
+    "title": "Code tính năng SqliteEventRepository",
+    "startAt": "2026-11-15T09:00:00+07:00",
+    "endAt": "2026-11-15T11:30:00+07:00",
+    "location": null,
+    "description": "Hoàn thiện CRUD và viết unit test seed dữ liệu.",
+    "colorHex": null,
+    "tags": [
+      {
+        "name": "Đồ án",
+        "colorHex": "#6366F1"
+      },
+      {
+        "name": "Lập trình",
+        "colorHex": "#EC4899"
+      }
+    ]
+  },
+  {
+    "title": "Chạy bộ công viên Gia Định",
+    "startAt": "2026-11-15T16:30:00+07:00",
+    "endAt": "2026-11-15T17:30:00+07:00",
+    "location": "Công viên Gia Định",
+    "description": null,
+    "colorHex": "#10B981",
+    "tags": [
+      {
+        "name": "Health",
+        "colorHex": null
+      },
+      {
+        "name": "Thể thao",
+        "colorHex": "MediumSeaGreen"
+      }
+    ]
+  },
+  {
+    "title": "Nộp báo cáo tiến độ tuần 1",
+    "startAt": "2026-11-16T20:00:00+07:00",
+    "endAt": "2026-11-16T21:00:00+07:00",
+    "location": "Online - MS Teams",
+    "description": "Gửi link PR và file schema.sql cho giảng viên.",
+    "colorHex": "#EF4444",
+    "tags": [
+      {
+        "name": "Urgent",
+        "colorHex": null
+      },
+      {
+        "name": "Study",
+        "colorHex": null
+      }
+    ]
+  },
+  {
+    "title": "Sự kiện chưa gắn tag (Test filter Untagged)",
+    "startAt": "2026-11-17T10:00:00+07:00",
+    "endAt": "2026-11-17T11:00:00+07:00",
+    "location": null,
+    "description": null,
+    "colorHex": null,
+    "tags": []
+  },
+  {
+    "title": "Cà phê trao đổi UI WPF",
+    "startAt": "2026-11-18T14:00:00+07:00",
+    "endAt": "2026-11-18T16:00:00+07:00",
+    "location": "Highlands Coffee",
+    "description": "Thống nhất màu sắc và template cho Month View.",
+    "colorHex": "#8B5CF6",
+    "tags": [
+      {
+        "name": "Đồ án",
+        "colorHex": "#6366F1"
+      },
+      {
+        "name": "Personal",
+        "colorHex": null
+      }
+    ]
+  },
+  {
+    "title": "Ôn tập kiến thức SQLite & Indexing",
+    "startAt": "2026-11-19T19:30:00+07:00",
+    "endAt": "2026-11-19T21:30:00+07:00",
+    "location": null,
+    "description": "Đọc lại tài liệu về composite index start_at_utc, end_at_utc.",
+    "colorHex": null,
+    "tags": [
+      {
+        "name": "Study",
+        "colorHex": null
+      },
+      {
+        "name": "Lập trình",
+        "colorHex": "#EC4899"
+      }
+    ]
+  },
+  {
+    "title": "Khám răng định kỳ",
+    "startAt": "2026-11-20T09:00:00+07:00",
+    "endAt": "2026-11-20T10:30:00+07:00",
+    "location": "Nha khoa Quận 1",
+    "description": null,
+    "colorHex": "#14B8A6",
+    "tags": [
+      {
+        "name": "Health",
+        "colorHex": null
+      },
+      {
+        "name": "Busy",
+        "colorHex": null
+      }
+    ]
+  },
+  {
+    "title": "Hackathon nội bộ cuối tuần",
+    "startAt": "2026-11-21T08:00:00+07:00",
+    "endAt": "2026-11-22T17:00:00+07:00",
+    "location": "Hội trường A",
+    "description": "Sự kiện kéo dài qua 2 ngày để test điều kiện overlap.",
+    "colorHex": "#EC4899",
+    "tags": [
+      {
+        "name": "Lập trình",
+        "colorHex": "#EC4899"
+      },
+      {
+        "name": "Urgent",
+        "colorHex": null
+      }
+    ]
+  },
+  {
+    "title": "Họp nhóm online (Test trùng giờ với Hackathon)",
+    "startAt": "2026-11-21T14:00:00+07:00",
+    "endAt": "2026-11-21T15:30:00+07:00",
+    "location": "Discord",
+    "description": "Kiểm tra khả năng hiển thị nhiều sự kiện chồng chéo thời gian.",
+    "colorHex": "#FF7F50",
+    "tags": [
+      {
+        "name": "Busy",
+        "colorHex": null
+      },
+      {
+        "name": "Work",
+        "colorHex": null
+      }
+    ]
+  },
+  {
+    "title": "Thanh toán tiền điện nước & Internet tháng 11",
+    "startAt": "2026-11-23T19:00:00+07:00",
+    "endAt": "2026-11-23T19:30:00+07:00",
+    "location": null,
+    "description": "Chuyển khoản qua app ngân hàng trước hạn chót.",
+    "colorHex": null,
+    "tags": [
+      {
+        "name": "Tài chính",
+        "colorHex": "Gold"
+      },
+      {
+        "name": "Urgent",
+        "colorHex": null
+      }
+    ]
+  },
+  {
+    "title": "Dạy kèm lập trình C# cơ bản",
+    "startAt": "2026-11-24T18:30:00+07:00",
+    "endAt": "2026-11-24T20:30:00+07:00",
+    "location": "Google Meet",
+    "description": "Hướng dẫn về OOP và xử lý ngoại lệ.",
+    "colorHex": "#6495ED",
+    "tags": [
+      {
+        "name": "Work",
+        "colorHex": null
+      },
+      {
+        "name": "Lịch cố định",
+        "colorHex": "CornflowerBlue"
+      }
+    ]
+  },
+  {
+    "title": "Sự kiện tối giản không location, description, color, tag",
+    "startAt": "2026-11-25T12:00:00+07:00",
+    "endAt": "2026-11-25T13:00:00+07:00",
+    "location": null,
+    "description": null,
+    "colorHex": null,
+    "tags": []
+  },
+  {
+    "title": "Tiệc sinh nhật Minh Anh",
+    "startAt": "2026-11-26T18:00:00+07:00",
+    "endAt": "2026-11-26T21:30:00+07:00",
+    "location": "Nhà hàng Quận 3",
+    "description": "Mua quà trước 17h.",
+    "colorHex": "#FF69B4",
+    "tags": [
+      {
+        "name": "Personal",
+        "colorHex": null
+      },
+      {
+        "name": "Gia đình & Bạn bè",
+        "colorHex": "#F43F5E"
+      }
+    ]
+  },
+  {
+    "title": "Đọc sách Clean Architecture",
+    "startAt": "2026-11-27T20:30:00+07:00",
+    "endAt": "2026-11-27T22:00:00+07:00",
+    "location": "Tại nhà",
+    "description": "Đọc hết chương về Dependency Inversion.",
+    "colorHex": null,
+    "tags": [
+      {
+        "name": "Study",
+        "colorHex": null
+      },
+      {
+        "name": "Phát triển bản thân",
+        "colorHex": null
+      }
+    ]
+  },
+  {
+    "title": "Tập bơi buổi sáng",
+    "startAt": "2026-11-28T06:30:00+07:00",
+    "endAt": "2026-11-28T07:45:00+07:00",
+    "location": "Hồ bơi Kỳ Đồng",
+    "description": null,
+    "colorHex": "#008080",
+    "tags": [
+      {
+        "name": "Health",
+        "colorHex": null
+      },
+      {
+        "name": "Thể thao",
+        "colorHex": "MediumSeaGreen"
+      }
+    ]
+  },
+  {
+    "title": "Tổng kết Sprint & Review PR toàn nhóm",
+    "startAt": "2026-11-29T15:00:00+07:00",
+    "endAt": "2026-11-29T17:00:00+07:00",
+    "location": "Thư viện Trung tâm",
+    "description": "Merge toàn bộ nhánh feature vào main sau khi test xong.",
+    "colorHex": "#DC143C",
+    "tags": [
+      {
+        "name": "Đồ án",
+        "colorHex": "#6366F1"
+      },
+      {
+        "name": "Work",
+        "colorHex": null
+      },
+      {
+        "name": "Urgent",
+        "colorHex": null
+      }
+    ]
+  },
+  {
+    "title": "Chuyến đi Đà Lạt cuối tháng (Test vắt qua tháng 12)",
+    "startAt": "2026-11-30T06:00:00+07:00",
+    "endAt": "2026-12-02T20:00:00+07:00",
+    "location": "Thành phố Đà Lạt, Lâm Đồng",
+    "description": "Test hiển thị sự kiện giao giữa tháng 11 và tháng 12 trên Month Grid.",
+    "colorHex": "#0EA5E9",
+    "tags": [
+      {
+        "name": "Personal",
+        "colorHex": null
+      },
+      {
+        "name": "Du lịch",
+        "colorHex": "#06B6D4"
+      }
+    ]
+  },
+  {
+    "title": "Ăn phở bò Đống Đa & uống cà phê sữa đá",
+    "startAt": "2026-12-03T07:30:00+07:00",
+    "endAt": "2026-12-03T08:30:00+07:00",
+    "location": "Đường Nguyễn Đình Chiểu, Quận 1",
+    "description": "Test tìm kiếm tiếng Việt đầy đủ thanh điệu và chữ Đ/đ.",
+    "colorHex": null,
+    "tags": [
+      {
+        "name": "Gia đình & Bạn bè",
+        "colorHex": "#F43F5E"
+      },
+      {
+        "name": "Du lịch",
+        "colorHex": "#06B6D4"
+      }
+    ]
+  }
+]
