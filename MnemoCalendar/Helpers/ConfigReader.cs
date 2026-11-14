@@ -2,20 +2,33 @@ using System.IO;
 using System.Text.Json.Nodes;
 
 namespace MnemoCalendar.Helpers;
-public static class ConfigReader
-{    
-    /// <summary>
-    /// Read the .config file and return specified data.
-    /// </summary>
-    public static string? Parse(string toParse){
-        string jsonString = File.ReadAllText(PathHelper.BaseDirectory("mnemo.config.json"));
-        JsonNode? root = JsonNode.Parse(jsonString);
 
-        if (root != null)
+public static class ConfigReader
+{
+    /// <summary>
+    /// Read the .config file and return specified data across nested keys.
+    /// For example: ConfigReader.Parse("default", "tag", "color");
+    /// </summary>
+    public static string? Parse(params string[] keys)
+    {
+        if (keys is null || keys.Length == 0)
+            return null;
+
+        string filePath = PathHelper.BaseDirectory("mnemo.config.json");
+        if (!File.Exists(filePath))
+            return null;
+
+        string jsonString = File.ReadAllText(filePath);
+        JsonNode? current = JsonNode.Parse(jsonString);
+
+        foreach (string key in keys)
         {
-            string? result = root[toParse]?.GetValue<string>();
-            return result;
+            if (current is null)
+                return null;
+
+            current = current[key];
         }
-        return null;
+
+        return current is JsonValue val ? val.ToString() : null;
     }
 }
