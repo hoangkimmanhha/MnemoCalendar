@@ -6,7 +6,7 @@ namespace MnemoCalendar.Helpers;
 public static class ConfigReader
 {
     /// <summary>
-    /// Read the .config file and return specified data using dot-separated path (e.g. "data.default.color").
+    /// Read the .config file and return specified data using dot-separated path (e.g. "data.default.colors.CornflowerBlue").
     /// Use for single value.
     /// </summary>
     public static string? Parse(string keyPath)
@@ -34,7 +34,7 @@ public static class ConfigReader
         return current is JsonValue val ? val.ToString() : null;
     }
     /// <summary>
-    /// Read the .config file and return specified data using dot-separated path (e.g. "data.default.color").
+    /// Read the .config file and return specified data using dot-separated path (e.g. "data.default.colors").
     /// Use for List values.
     /// </summary>
     public static List<string> ParseList(string keyPath)
@@ -63,5 +63,35 @@ public static class ConfigReader
         }
 
         return new List<string>();
+    }
+
+    /// <summary>
+    /// Read the .config file and return specified data using dot-separated path (e.g. "data.default.colors").
+    /// Use for Dictionary values.
+    /// </summary>
+    public static Dictionary<string, string> ParseDictionary(string keyPath)
+    {
+        var result = new Dictionary<string, string>();
+        string filePath = PathHelper.BaseDirectory("mnemo.config.json");
+        if (string.IsNullOrWhiteSpace(keyPath) || !File.Exists(filePath))
+            return result;
+
+        JsonNode? current = JsonNode.Parse(File.ReadAllText(filePath));
+        foreach (string segment in keyPath.Split('.', StringSplitOptions.RemoveEmptyEntries))
+        {
+            current = current?[segment];
+            if (current is null) return result;
+        }
+
+        if (current is JsonObject obj)
+        {
+            foreach (var kvp in obj)
+            {
+                if (kvp.Value is JsonValue val)
+                    result[kvp.Key] = val.ToString();
+            }
+        }
+
+        return result;
     }
 }
