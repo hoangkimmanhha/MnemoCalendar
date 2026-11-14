@@ -27,8 +27,8 @@ public partial class App : Application
     {
         base.OnStartup(e);
 
-        // NormalInitialize();
-        TestInitialize();
+        NormalInitialize();
+        // TestInitialize();
 
         var mainWindow = new MainWindow();
         mainWindow.Show();
