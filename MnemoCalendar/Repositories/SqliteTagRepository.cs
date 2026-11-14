@@ -27,8 +27,8 @@ public class SqliteTagRepository: ITagRepository
             @"INSERT OR IGNORE INTO tags (name, name_ascii, color_hex)
             VALUES ($name,$name_ascii, $color_hex);
             SELECT id FROM tags WHERE name_ascii = $name_ascii;";
-        command.Parameters.AddWithValue("$name", tag.Name);
-        command.Parameters.AddWithValue("$name_ascii", StringHelper.RemoveDiacritics(tag.Name));
+        command.Parameters.AddWithValue("$name", tag.Name.Trim());
+        command.Parameters.AddWithValue("$name_ascii", StringHelper.RemoveDiacritics(tag.Name.Trim()));
         command.Parameters.AddWithValue("$color_hex", ColorHelper.ColorHexCode(tag.ColorHex) ?? ConfigReader.Parse("default.tag.color"));
 
         long id = Convert.ToInt32(command.ExecuteScalar());
