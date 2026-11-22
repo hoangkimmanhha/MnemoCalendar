@@ -16,6 +16,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Assets\Fonts\SVN-Aller.otf" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Update="Data\schema.sql">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
