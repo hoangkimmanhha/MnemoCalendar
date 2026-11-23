@@ -51,6 +51,16 @@
                            Text="Mnemo Calendar"
                            Foreground="{StaticResource ForegroundColor}"/>
             </StackPanel>
+            <TextBlock Grid.Column="1" Style="{StaticResource NormalTextStyle}"
+                       Text="Nov, 2026"
+                       FontSize="25"/>
+            <StackPanel Grid.Column="2" Orientation="Horizontal">
+                <Button Style="{DynamicResource TodayButtonStyle}"
+                        x:Name="JumpTodayButton" Content="Today"
+                        BorderThickness=".7" BorderBrush="{StaticResource ForegroundColor}"
+                        Height="40" Padding="20,0"
+                        FontSize="{StaticResource FontSizeRegular}"/>
+            </StackPanel>
         </Grid>
         <StackPanel x:Name="menu" DockPanel.Dock="Left" Width="250">
             <StackPanel.Background>
