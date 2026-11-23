@@ -24,7 +24,7 @@
     <DockPanel>
         <Grid x:Name="title" DockPanel.Dock="Top" Height="60" Background="{DynamicResource SurfaceColor}">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1.5*"></ColumnDefinition>
+                <ColumnDefinition Width="1.8 *"></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
@@ -69,7 +69,7 @@
                     <GradientStop Color="#FF18153D" Offset="1"/>
                 </LinearGradientBrush>
             </StackPanel.Background>
-            <Button Style="{DynamicResource DefaultButtonStyle}" x:Name="Create"
+            <Button Style="{DynamicResource DefaultButtonStyle}" x:Name="CreateButton"
                     Height="65"
                     Margin="8" Padding="0"
                     HorizontalContentAlignment="Left"
@@ -79,11 +79,13 @@
                     <iconPacks:PackIconMaterial Kind="Plus"
                                                 VerticalAlignment="Center"
                                                 Width="30" Height="30"
-                                                Margin="20,0,23,0" Padding="0"
-                                                Foreground="{DynamicResource BackgroundColor}"/>
+                                                Margin="20,0,23,0" Padding="0"/>
                     <TextBlock VerticalAlignment="Center"
-                               Text="Create" Foreground="{DynamicResource BackgroundColor}"
-                               FontSize="{StaticResource FontSizeTitle}"/>
+                               Text="Create" FontSize="{StaticResource FontSizeTitle}"/>
+                    <iconPacks:PackIconMaterial Kind="MenuDown"
+                                                VerticalAlignment="Center"
+                                                Margin="20,5,0,0"
+                                                Width="20" Height="20"/>
                 </StackPanel>
             </Button>
             <Border Height="1" 
