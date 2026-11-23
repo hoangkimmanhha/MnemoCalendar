@@ -82,17 +82,23 @@
                 </Button>
             </StackPanel>
         </Grid>
-        <StackPanel x:Name="menu" DockPanel.Dock="Left" Width="250">
-            <StackPanel.Background>
+        <Grid x:Name="menu" DockPanel.Dock="Left" Width="250">
+            <Grid.Background>
                 <LinearGradientBrush EndPoint="1,1" StartPoint="0,0">
                     <GradientStop Color="#FF1E1E1E" Offset="0.535"/>
                     <GradientStop Color="#FF18153D" Offset="1"/>
                 </LinearGradientBrush>
-            </StackPanel.Background>
-            <Button Style="{DynamicResource BaseButtonStyle}" x:Name="CreateButton"
+            </Grid.Background>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="80"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="150"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Button Grid.Row="0" Style="{DynamicResource BaseButtonStyle}" x:Name="CreateButton"
                     Height="65"
                     Margin="8" Padding="0"
-                    HorizontalContentAlignment="Left"
+                    VerticalAlignment="Center" HorizontalContentAlignment="Left"
                     Background="{DynamicResource PrimaryColor}"
                     Foreground="{DynamicResource SurfaceColor}" RenderTransformOrigin="0.5,0.5">
                 <StackPanel Orientation="Horizontal">
@@ -113,16 +119,49 @@
                     </EventTrigger>
                 </Button.Triggers>
             </Button>
-            <Border Height="1" 
+            <Border Height="1"
+                    VerticalAlignment="Bottom"
                     Background="Gray" 
                     Margin="12,0"/>
-            <TextBlock Style="{StaticResource DescriptionTextStyle}"
-                       HorizontalAlignment="Left"
+            <TextBlock Grid.Row="1" Style="{StaticResource DescriptionTextStyle}"
+                       VerticalAlignment="Top" HorizontalAlignment="Left"
                        Text="Search anything:"
                        Margin="120,10,0,0"/>
-            <usercontrols:SearchBar x:Name="SearchBar"
-                                    Margin="8,0"/>
-        </StackPanel>
+            <usercontrols:SearchBar Grid.Row="1" x:Name="SearchBar"
+                                    VerticalAlignment="Top"
+                                    Margin="8,25,8,0"/>
+            <ListBox Grid.Row="1" Style="{DynamicResource ResultListBoxStyle}"
+                     d:ItemsSource="{d:SampleData ItemCount=5}"
+                     Margin="8,60,8,10" Padding="12,8"/>
+            <Border Grid.Row="1" Height="1"
+                    VerticalAlignment="Bottom"
+                    Background="Gray" 
+                    Margin="12,0"/>
+            <TextBlock Grid.Row="2" Style="{StaticResource DescriptionTextStyle}"
+                       VerticalAlignment="Top" HorizontalAlignment="Left"
+                       Text="Showing tags:"
+                       Margin="120,10,0,0"/>
+            <ListBox Grid.Row="2" Style="{DynamicResource ResultListBoxStyle}"
+                     d:ItemsSource="{d:SampleData ItemCount=5}"
+                     Margin="8,25,8,10" Padding="12,8"/>
+            <Border Grid.Row="2" Height="1"
+                    VerticalAlignment="Bottom"
+                    Background="Gray" 
+                    Margin="12,0"/>
+            <TextBlock Grid.Row="3" Style="{DynamicResource NormalTextStyle}"
+                       VerticalAlignment="Top" HorizontalAlignment="Left"
+                       Text="Good evening!"
+                       Margin="20,10,20,0"/>
+            <TextBlock Grid.Row="3" Style="{DynamicResource NormalTextStyle}"
+                       FontSize="40"
+                       Text="22:37"
+                       VerticalAlignment="Top" HorizontalAlignment="Left"
+                       Margin="20,40,20,20"/>
+            <TextBlock Grid.Row="3" Style="{DynamicResource NormalTextStyle}"
+                       Text="Monday, Nov 23, 2026"
+                       VerticalAlignment="Top" HorizontalAlignment="Left"
+                       Margin="20,100,20,0"/>
+        </Grid>
         <Grid x:Name="main" Background="{DynamicResource BackgroundColor}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="36"/>
