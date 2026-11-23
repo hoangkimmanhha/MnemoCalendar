@@ -54,7 +54,7 @@
         </Setter>
     </Style>
 
-    <Style x:Key="TodayButtonStyle" TargetType="Button" BasedOn="{StaticResource DefaultButtonStyle}">
+    <Style x:Key="RoundedButtonStyle" TargetType="Button" BasedOn="{StaticResource DefaultButtonStyle}">
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
