@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
         xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+        xmlns:usercontrols="clr-namespace:MnemoCalendar.Views.UserControls"
         xmlns:local="clr-namespace:MnemoCalendar"
         mc:Ignorable="d"
         Title="Mnemo Calendar" Height="700" Width="1000"
@@ -110,6 +111,8 @@
             <Border Height="1" 
                     Background="Gray" 
                     Margin="12,0"/>
+            <usercontrols:SearchBar x:Name="SearchBar"
+                                    Margin="8"/>
         </StackPanel>
         <Grid x:Name="main" Background="{DynamicResource BackgroundColor}">
             <Grid.RowDefinitions>
