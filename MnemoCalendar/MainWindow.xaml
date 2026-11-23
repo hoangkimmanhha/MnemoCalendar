@@ -8,7 +8,7 @@
         xmlns:local="clr-namespace:MnemoCalendar"
         mc:Ignorable="d"
         Title="Mnemo Calendar" Height="700" Width="1000"
-        MinWidth="800" MinHeight="450">
+        MinWidth="915" MinHeight="450">
     <Window.Resources>
         <Storyboard x:Key="CollapseMenu">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetName="menu" Storyboard.TargetProperty="(FrameworkElement.Width)">
@@ -26,10 +26,10 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1.8 *"></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition Width="1.2*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                <ToggleButton Style="{StaticResource MenuToggleButtonStyle}" x:Name="MenuButton"
+                <ToggleButton Style="{StaticResource NormalToggleButtonStyle}" x:Name="MenuButton"
                               VerticalAlignment="Center" HorizontalAlignment="Left"
                               Width="60" Height="50"
                               Margin="0,5,10,5" Padding="0">
@@ -54,12 +54,31 @@
             <TextBlock Grid.Column="1" Style="{StaticResource NormalTextStyle}"
                        Text="Nov, 2026"
                        FontSize="25"/>
-            <StackPanel Grid.Column="2" Orientation="Horizontal">
-                <Button Style="{DynamicResource TodayButtonStyle}"
+            <StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button Style="{DynamicResource RoundedButtonStyle}"
                         x:Name="JumpTodayButton" Content="Today"
-                        BorderThickness=".7" BorderBrush="{StaticResource ForegroundColor}"
-                        Height="40" Padding="20,0"
+                        BorderThickness=".7" BorderBrush="{DynamicResource ForegroundColor}"
+                        Height="40" Padding="20,0" Margin="0,0,15,0"
                         FontSize="{StaticResource FontSizeRegular}"/>
+                <ToggleButton Style="{DynamicResource RoundedToggleButtonStyle}"
+                              x:Name="SwitchViewButton"
+                              Foreground="{DynamicResource ForegroundColor}"
+                              BorderThickness=".7" BorderBrush="{DynamicResource ForegroundColor}"
+                              Height="40" Padding="15,0" Margin="0,0,15,0">
+                    <StackPanel Orientation="Horizontal">
+                        <iconPacks:Material Kind="ViewWeekOutline"
+                                            Width="25" Height="25"/>
+                        <Border Background="{DynamicResource ForegroundColor}"
+                                Width="1.5" Margin="5,1"/>
+                        <iconPacks:Material Kind="ViewDayOutline"
+                    Width="25" Height="25"/>
+                    </StackPanel>
+                </ToggleButton>
+                <Button x:Name="SettingsButton" Style="{DynamicResource DefaultButtonStyle}"
+                        Margin="0,0,15,0">
+                    <iconPacks:Material Kind="CogOutline"
+                                        Width="35" Height="35"/>
+                </Button>
             </StackPanel>
         </Grid>
         <StackPanel x:Name="menu" DockPanel.Dock="Left" Width="250">
