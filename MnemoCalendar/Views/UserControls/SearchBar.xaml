@@ -20,6 +20,7 @@
             <Setter Property="CaretBrush" Value="{DynamicResource ForegroundColor}"/>
             <Setter Property="BorderThickness" Value=".5"/>
             <Setter Property="Padding" Value="3,0,3,0"/>
+            <Setter Property="FontFamily" Value="{StaticResource SystemFont}"/>
             <Setter Property="HorizontalContentAlignment" Value="Left"/>
             <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst"/>
             <Setter Property="Template">
@@ -65,8 +66,15 @@
                             Width="25" Height="25"/>
         </Button>
         <TextBox x:Name="SearchBarInput"
-                 Margin="0,0,30,0" Background="Transparent"
-                 BorderThickness=".5">
+                 Margin="0,0,35,0" Background="Transparent"
+                 BorderThickness=".5"
+                 TextChanged="SearchBarInput_TextChanged">
         </TextBox>
+        <TextBlock x:Name="PlaceHolder" Text="Search..."
+                   Style="{StaticResource NormalTextStyle}"
+                   HorizontalAlignment="Left" FontStyle="Italic" FontSize="15"
+                   Opacity=".7" Panel.ZIndex="-1"
+                   MinWidth="0"
+                   Margin="10,0,0,0"/>
     </Grid>
 </UserControl>
