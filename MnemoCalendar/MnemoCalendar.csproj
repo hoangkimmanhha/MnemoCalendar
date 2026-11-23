@@ -16,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Assets\Fonts\calibri.ttf" />
     <Resource Include="Assets\Fonts\SVN-Aller.otf" />
   </ItemGroup>
 

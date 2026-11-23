@@ -5,7 +5,9 @@
 
     
     <FontFamily x:Key="SystemFont">/MnemoCalendar;component/Assets/Fonts/#SVN-Aller</FontFamily>
+    <FontFamily x:Key="DescriptionFont">/MnemoCalendar;component/Assets/Fonts/#Calibri</FontFamily>
     <sys:Double x:Key="FontSizeRegular">20</sys:Double>
+    <sys:Double x:Key="FontSizeSmall">14</sys:Double>
     <sys:Double x:Key="FontSizeTitle">35</sys:Double>
 
     <Style x:Key="NormalTextStyle" TargetType="TextBlock">
@@ -14,6 +16,11 @@
         <Setter Property="VerticalAlignment" Value="Center"/>
         <Setter Property="FontFamily" Value="{StaticResource SystemFont}"/>
         <Setter Property="FontSize" Value="{StaticResource FontSizeRegular}"/>
+    </Style>
+
+    <Style x:Key="DescriptionTextStyle" TargetType="TextBlock" BasedOn="{StaticResource NormalTextStyle}">
+        <Setter Property="FontSize" Value="{StaticResource FontSizeSmall}"/>
+        <Setter Property="FontFamily" Value="{StaticResource DescriptionFont}"/>
     </Style>
 
     <Style x:Key="BaseButtonStyle" TargetType="Button">
