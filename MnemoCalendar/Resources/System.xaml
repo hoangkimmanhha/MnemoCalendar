@@ -82,7 +82,7 @@
         </Setter>
     </Style>
 
-    <Style x:Key="MenuToggleButtonStyle" TargetType="ToggleButton">
+    <Style x:Key="NormalToggleButtonStyle" TargetType="ToggleButton">
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="Cursor" Value="Hand"/>
 
