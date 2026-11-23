@@ -10,17 +10,5 @@ namespace MnemoCalendar.Views.UserControls
         {
             InitializeComponent();
         }
-
-        private void SearchBarInput_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            if (string.IsNullOrEmpty(SearchBarInput.Text))
-            {
-                PlaceHolder.Visibility = Visibility.Visible;
-            }
-            else
-            {
-                PlaceHolder.Visibility = Visibility.Hidden;
-            }
-        }
     }
 }
