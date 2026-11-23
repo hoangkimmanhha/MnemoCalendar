@@ -65,7 +65,7 @@
         <StackPanel x:Name="menu" DockPanel.Dock="Left" Width="250">
             <StackPanel.Background>
                 <LinearGradientBrush EndPoint="1,1" StartPoint="0,0">
-                    <GradientStop Color="#FF1B1B1B" Offset="0.535"/>
+                    <GradientStop Color="#FF1E1E1E" Offset="0.535"/>
                     <GradientStop Color="#FF18153D" Offset="1"/>
                 </LinearGradientBrush>
             </StackPanel.Background>
@@ -73,7 +73,8 @@
                     Height="65"
                     Margin="8" Padding="0"
                     HorizontalContentAlignment="Left"
-                    Background="{DynamicResource PrimaryColor}">
+                    Background="{DynamicResource PrimaryColor}"
+                    Foreground="{DynamicResource SurfaceColor}">
                 <StackPanel Orientation="Horizontal">
                     <iconPacks:PackIconMaterial Kind="Plus"
                                                 VerticalAlignment="Center"
