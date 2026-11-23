@@ -15,10 +15,16 @@
             <DoubleAnimationUsingKeyFrames Storyboard.TargetName="menu" Storyboard.TargetProperty="(FrameworkElement.Width)">
                 <EasingDoubleKeyFrame KeyTime="00:00:00.2000000" Value="85"/>
             </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="CreateButton" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00.2000000" Value="90"/>
+            </DoubleAnimationUsingKeyFrames>
         </Storyboard>
         <Storyboard x:Key="ExpandMenu">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetName="menu" Storyboard.TargetProperty="(FrameworkElement.Width)">
                 <EasingDoubleKeyFrame KeyTime="00:00:00.2000000" Value="250"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="CreateButton" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00.2000000" Value="0"/>
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
     </Window.Resources>
@@ -46,7 +52,7 @@
                         </EventTrigger>
                     </ToggleButton.Triggers>
                 </ToggleButton>
-                
+
                 <TextBlock FontFamily="{StaticResource SystemFont}" FontSize="{StaticResource FontSizeTitle}" FontWeight="Bold"
                            VerticalAlignment="Center"
                            Text="Mnemo Calendar"
@@ -75,7 +81,7 @@
                     Width="25" Height="25"/>
                     </StackPanel>
                 </ToggleButton>
-                <Button x:Name="SettingsButton" Style="{DynamicResource DefaultButtonStyle}"
+                <Button x:Name="SettingsButton" Style="{DynamicResource SettingsButtonStyle}"
                         Margin="0,0,15,0">
                     <iconPacks:Material Kind="CogOutline"
                                         Width="35" Height="35"/>
@@ -89,12 +95,20 @@
                     <GradientStop Color="#FF18153D" Offset="1"/>
                 </LinearGradientBrush>
             </StackPanel.Background>
-            <Button Style="{DynamicResource DefaultButtonStyle}" x:Name="CreateButton"
+            <Button Style="{DynamicResource BaseButtonStyle}" x:Name="CreateButton"
                     Height="65"
                     Margin="8" Padding="0"
                     HorizontalContentAlignment="Left"
                     Background="{DynamicResource PrimaryColor}"
-                    Foreground="{DynamicResource SurfaceColor}">
+                    Foreground="{DynamicResource SurfaceColor}" RenderTransformOrigin="0.5,0.5">
+                <Button.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Button.RenderTransform>
                 <StackPanel Orientation="Horizontal">
                     <iconPacks:PackIconMaterial Kind="Plus"
                                                 VerticalAlignment="Center"
