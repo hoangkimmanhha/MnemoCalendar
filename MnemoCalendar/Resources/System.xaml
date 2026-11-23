@@ -7,7 +7,7 @@
     <FontFamily x:Key="SystemFont">/MnemoCalendar;component/Assets/Fonts/#SVN-Aller</FontFamily>
     <FontFamily x:Key="DescriptionFont">/MnemoCalendar;component/Assets/Fonts/#Calibri</FontFamily>
     <sys:Double x:Key="FontSizeRegular">20</sys:Double>
-    <sys:Double x:Key="FontSizeSmall">14</sys:Double>
+    <sys:Double x:Key="FontSizeSmall">12</sys:Double>
     <sys:Double x:Key="FontSizeTitle">35</sys:Double>
 
     <Style x:Key="NormalTextStyle" TargetType="TextBlock">
