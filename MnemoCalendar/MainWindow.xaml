@@ -106,13 +106,13 @@
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <TextBlock Grid.Column="0" Text="Mon" Style="{StaticResource Day}"/>
-                <TextBlock Grid.Column="1" Text="Tue" Style="{StaticResource Day}"/>
-                <TextBlock Grid.Column="2" Text="Wed" Style="{StaticResource Day}"/>
-                <TextBlock Grid.Column="3" Text="Thu" Style="{StaticResource Day}"/>
-                <TextBlock Grid.Column="4" Text="Fri" Style="{StaticResource Day}"/>
-                <TextBlock Grid.Column="5" Text="Sat" Style="{StaticResource Day}"/>
-                <TextBlock Grid.Column="6" Text="Sun" Style="{StaticResource Day}" Foreground="#FFAE2929"/>
+                <TextBlock Grid.Column="0" Text="Mon" Style="{StaticResource NormalTextStyle}"/>
+                <TextBlock Grid.Column="1" Text="Tue" Style="{StaticResource NormalTextStyle}"/>
+                <TextBlock Grid.Column="2" Text="Wed" Style="{StaticResource NormalTextStyle}"/>
+                <TextBlock Grid.Column="3" Text="Thu" Style="{StaticResource NormalTextStyle}"/>
+                <TextBlock Grid.Column="4" Text="Fri" Style="{StaticResource NormalTextStyle}"/>
+                <TextBlock Grid.Column="5" Text="Sat" Style="{StaticResource NormalTextStyle}"/>
+                <TextBlock Grid.Column="6" Text="Sun" Style="{StaticResource NormalTextStyle}" Foreground="#FFAE2929"/>
 
                 <Border Grid.Column="0" Grid.ColumnSpan="7"
                         VerticalAlignment="Bottom"
