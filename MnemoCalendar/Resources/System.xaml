@@ -8,7 +8,7 @@
     <sys:Double x:Key="FontSizeRegular">20</sys:Double>
     <sys:Double x:Key="FontSizeTitle">35</sys:Double>
 
-    <Style x:Key="Day" TargetType="TextBlock">
+    <Style x:Key="NormalTextStyle" TargetType="TextBlock">
         <Setter Property="Foreground" Value="{DynamicResource ForegroundColor}"/>
         <Setter Property="HorizontalAlignment" Value="Center"/>
         <Setter Property="VerticalAlignment" Value="Center"/>
@@ -18,30 +18,63 @@
 
     <Style x:Key="DefaultButtonStyle" TargetType="Button">
         <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Foreground" Value="{DynamicResource ForegroundColor}"/>
         <Setter Property="FontFamily" Value="{StaticResource SystemFont}"/>
         <Setter Property="FontSize" Value="{StaticResource FontSizeRegular}"/>
         <Setter Property="Cursor" Value="Hand"/>
-        <Setter Property="Padding" Value="8"/>
+        <Setter Property="Padding" Value="1"/>
+        <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
 
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
-                    <Border x:Name="RootBorder"
+                    <Border x:Name="border"
                         Background="{TemplateBinding Background}"
                         CornerRadius="6"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
                         Padding="{TemplateBinding Padding}">
+                        
                         <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                           VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
                     </Border>
 
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="RootBorder" Property="Opacity" Value=".7"/>
+                            <Setter TargetName="border" Property="Opacity" Value=".7"/>
                         </Trigger>
                         <Trigger Property="IsPressed" Value="True">
-                            <Setter TargetName="RootBorder" Property="Opacity" Value=".5"/>
+                            <Setter TargetName="border" Property="Opacity" Value=".5"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="TodayButtonStyle" TargetType="Button" BasedOn="{StaticResource DefaultButtonStyle}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border x:Name="border"
+            Background="{TemplateBinding Background}"
+            CornerRadius="20"
+                BorderThickness="{TemplateBinding BorderThickness}"
+                BorderBrush="{TemplateBinding BorderBrush}"
+            Padding="{TemplateBinding Padding}">
+
+                        <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="border" Property="Opacity" Value=".7"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="border" Property="Opacity" Value=".5"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -56,7 +89,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ToggleButton">
-                    <Border x:Name="RootBorder"
+                    <Border x:Name="border"
                         Background="{TemplateBinding Background}"
                         CornerRadius="6"
                         Padding="{TemplateBinding Padding}">
@@ -66,10 +99,10 @@
 
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="RootBorder" Property="Opacity" Value=".7"/>
+                            <Setter TargetName="border" Property="Opacity" Value=".7"/>
                         </Trigger>
                         <Trigger Property="IsPressed" Value="True">
-                            <Setter TargetName="RootBorder" Property="Opacity" Value=".5"/>
+                            <Setter TargetName="border" Property="Opacity" Value=".5"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
