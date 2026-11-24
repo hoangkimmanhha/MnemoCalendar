@@ -144,8 +144,6 @@
                 </RadioButton>
             </StackPanel>
         </Grid>
-        <Grid>
-            <RadioButton Content="RadioButton" HorizontalAlignment="Center" Height="44" VerticalAlignment="Center" Width="24"/>
-        </Grid>
+        <Grid/>
     </DockPanel>
 </Window>
