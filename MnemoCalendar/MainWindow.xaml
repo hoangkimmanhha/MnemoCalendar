@@ -126,14 +126,10 @@
             <Border Height="1"
                     VerticalAlignment="Bottom"
                     Background="Gray" 
-                    Margin="12,0"/>
-            <TextBlock Grid.Row="1" Style="{StaticResource DescriptionTextStyle}"
-                       VerticalAlignment="Top" HorizontalAlignment="Left"
-                       Text="Search anything:"
-                       Margin="120,10,0,0"/>
+                    Margin="12,0"/> 
             <usercontrols:SearchBar Grid.Row="1" x:Name="SearchBar"
                                     VerticalAlignment="Top"
-                                    Margin="8,25,8,0"/>
+                                    Margin="8,0,8,0"/>
             <ListBox Grid.Row="1" Style="{DynamicResource ResultListBoxStyle}"
                      d:ItemsSource="{d:SampleData ItemCount=5}"
                      Margin="8,60,8,10" Padding="12,8"/>
@@ -141,13 +137,15 @@
                     VerticalAlignment="Bottom"
                     Background="Gray" 
                     Margin="12,0"/>
-            <TextBlock Grid.Row="2" Style="{StaticResource DescriptionTextStyle}"
-                       VerticalAlignment="Top" HorizontalAlignment="Left"
-                       Text="Showing tags:"
-                       Margin="120,10,0,0"/>
-            <ListBox Grid.Row="2" Style="{DynamicResource ResultListBoxStyle}"
-                     d:ItemsSource="{d:SampleData ItemCount=5}"
-                     Margin="8,25,8,10" Padding="12,8"/>
+            <GroupBox Grid.Row="2" Header="Showing tags:" FontFamily="{StaticResource DescriptionFont}"
+                      Foreground="{DynamicResource ForegroundColor}"
+                      BorderThickness="0"
+                      Margin="8,10,8,10">
+                <ListBox Style="{DynamicResource ResultListBoxStyle}"
+                         d:ItemsSource="{d:SampleData ItemCount=5}"
+                          Padding="3"/>
+            </GroupBox>
+            
             <Border Grid.Row="2" Height="1"
                     VerticalAlignment="Bottom"
                     Background="Gray" 
