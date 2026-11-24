@@ -9,7 +9,8 @@
         xmlns:local="clr-namespace:MnemoCalendar"
         mc:Ignorable="d"
         Title="Mnemo Calendar" Height="700" Width="1000"
-        MinWidth="915" MinHeight="450">
+        MinWidth="915" MinHeight="450"
+        Icon="/Assets/Media/icon.png">
     <Window.Resources>
         <Storyboard x:Key="CollapseMenu">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetName="menu" Storyboard.TargetProperty="(FrameworkElement.Width)">
@@ -47,6 +48,13 @@
                         </EventTrigger>
                     </ToggleButton.Triggers>
                 </ToggleButton>
+
+                <Border Width="30" Height="30" CornerRadius="5"
+                        Margin="0,0,10,0">
+                    <Border.Background>
+                        <ImageBrush ImageSource="/Assets/Media/icon.png" Stretch="UniformToFill" />
+                    </Border.Background>
+                </Border>
 
                 <TextBlock FontFamily="{StaticResource SystemFont}" FontSize="{StaticResource FontSizeTitle}" FontWeight="Bold"
                            VerticalAlignment="Center"
