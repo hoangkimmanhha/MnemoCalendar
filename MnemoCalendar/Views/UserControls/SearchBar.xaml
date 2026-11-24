@@ -6,7 +6,7 @@
         xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
         xmlns:local="clr-namespace:MnemoCalendar.Views.UserControls"
         mc:Ignorable="d"
-        d:DesignHeight="30" d:DesignWidth="800">
+        d:DesignHeight="60" d:DesignWidth="800">
     <UserControl.Resources>
         <SolidColorBrush x:Key="TextBox.Static.Border" Color="#FFABAdB3"/>
         <SolidColorBrush x:Key="TextBox.MouseOver.Border" Color="#FF7EB4EA"/>
@@ -59,14 +59,21 @@
             </Style.Triggers>
         </Style>
     </UserControl.Resources>
+    
     <Grid Background="Transparent" VerticalAlignment="Center">
-        <Button x:Name="SearchButton" Style="{StaticResource DefaultButtonStyle}"
-                VerticalAlignment="Center" HorizontalAlignment="Right">
-            <iconPacks:PackIconMaterial Kind="Magnify"
-                            Width="25" Height="25"/>
-        </Button>
-        <TextBox x:Name="SearchBarInput"
-                 Margin="0,0,35,0" Background="Transparent"
-                 BorderThickness=".5"/>
+        <GroupBox Header="Search" FontFamily="{StaticResource DescriptionFont}"
+                  Foreground="{DynamicResource ForegroundColor}"
+                  BorderThickness="0">
+            <Grid>
+                <Button x:Name="SearchButton" Style="{StaticResource DefaultButtonStyle}"
+VerticalAlignment="Center" HorizontalAlignment="Right">
+                    <iconPacks:PackIconMaterial Kind="Magnify"
+            Width="25" Height="25"/>
+                </Button>
+                <TextBox x:Name="SearchBarInput"
+ Margin="0,0,35,0" Background="Transparent"
+ BorderThickness=".5"/>
+            </Grid>
+        </GroupBox>
     </Grid>
 </UserControl>
