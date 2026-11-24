@@ -7,4 +7,13 @@
     <SolidColorBrush x:Key="SecondaryColor" Color="#eda945"/>
     <SolidColorBrush x:Key="ForegroundColor" Color="#dedede"/>
     <SolidColorBrush x:Key="ButtonBackgroundColor" Color="#37393B"/>
+
+    <LinearGradientBrush x:Key="TopBarGradientBackground" EndPoint="0.5,1" StartPoint="0.5,0">
+        <GradientStop Color="#FF1E1E1E" Offset="0.726"/>
+        <GradientStop Color="#FF18153D"/>
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="LeftMenuGradientBackground" EndPoint="1,1" StartPoint="0,0">
+        <GradientStop Color="#FF1E1E1E" Offset="0.535"/>
+        <GradientStop Color="#FF18153D" Offset="1"/>
+    </LinearGradientBrush>
 </ResourceDictionary>

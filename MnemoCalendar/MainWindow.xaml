@@ -23,7 +23,8 @@
         </Storyboard>
     </Window.Resources>
     <DockPanel>
-        <Grid x:Name="title" DockPanel.Dock="Top" Height="60" Background="{DynamicResource SurfaceColor}">
+        <Grid x:Name="title" DockPanel.Dock="Top" Height="60"
+              Background="{DynamicResource TopBarGradientBackground}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1.8 *"></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
@@ -82,13 +83,8 @@
                 </Button>
             </StackPanel>
         </Grid>
-        <Grid x:Name="menu" DockPanel.Dock="Left" Width="250">
-            <Grid.Background>
-                <LinearGradientBrush EndPoint="1,1" StartPoint="0,0">
-                    <GradientStop Color="#FF1E1E1E" Offset="0.535"/>
-                    <GradientStop Color="#FF18153D" Offset="1"/>
-                </LinearGradientBrush>
-            </Grid.Background>
+        <Grid x:Name="menu" DockPanel.Dock="Left" Width="250"
+              Background="{DynamicResource LeftMenuGradientBackground}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="80"></RowDefinition>
                 <RowDefinition Height="*"></RowDefinition>
