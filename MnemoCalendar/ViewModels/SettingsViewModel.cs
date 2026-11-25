@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using MnemoCalendar.ViewModels.Settings;
 using System.Data;
 
 namespace MnemoCalendar.ViewModels;
