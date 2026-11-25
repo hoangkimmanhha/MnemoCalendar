@@ -119,7 +119,7 @@
 
                 <RadioButton Style="{StaticResource SidebarRadioButtonStyle}" 
              GroupName="SettingsMenu"
-             IsChecked="True"
+             IsChecked="False"
              Command="{Binding NavigateCommand}"
              CommandParameter="Data">
                     <StackPanel Orientation="Horizontal">
@@ -144,6 +144,9 @@
                 </RadioButton>
             </StackPanel>
         </Grid>
-        <Grid/>
+        <Grid>
+            <ContentControl Content="ContentControl"
+                            VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        </Grid>
     </DockPanel>
 </Window>

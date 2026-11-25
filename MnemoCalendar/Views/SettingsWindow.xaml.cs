@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using MnemoCalendar.ViewModels;
 
 namespace MnemoCalendar.Views
 {
@@ -7,6 +8,7 @@ namespace MnemoCalendar.Views
         public SettingsWindow()
         {
             InitializeComponent();
+            DataContext = new SettingsViewModel();
         }
     }
 }
