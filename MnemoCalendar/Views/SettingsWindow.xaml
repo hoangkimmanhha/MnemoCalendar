@@ -6,10 +6,14 @@
         xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
         xmlns:usercontrols="clr-namespace:MnemoCalendar.Views.UserControls"
         xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        xmlns:vm="clr-namespace:MnemoCalendar.ViewModels.Settings"
+        xmlns:views="clr-namespace:MnemoCalendar.Views.Settings"
         xmlns:local="clr-namespace:MnemoCalendar.Views"
         mc:Ignorable="d"
         WindowStartupLocation="CenterOwner"
-        Title="Settings" Height="450" Width="700">
+        Title="Settings" MinHeight="450" MinWidth="750"
+        Icon="/Assets/Media/icon.png"
+        Height="450" Width="750">
     <Window.Resources>
         <Style x:Key="SidebarRadioButtonStyle" TargetType="RadioButton">
             <Setter Property="Foreground" Value="#E0E0E0" />
@@ -49,11 +53,19 @@
                 </Setter.Value>
             </Setter>
         </Style>
+
+        <DataTemplate DataType="{x:Type vm:ThemeViewModel}">
+            <views:ThemeView/>
+        </DataTemplate>
     </Window.Resources>
     
     <DockPanel Background="{DynamicResource BackgroundColor}"
                LastChildFill="True">
         <Grid DockPanel.Dock="Top" Height="60" Background="{DynamicResource TopBarGradientBackground}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
             <Border Width="30" Height="30" CornerRadius="5"
                     VerticalAlignment="Center" HorizontalAlignment="Left"
                     Margin="20,0,0,0">
@@ -72,7 +84,8 @@
                            HorizontalAlignment="Left"
                            Text="Version 1.0.0"/>
             </StackPanel>
-            <usercontrols:SearchBar DockPanel.Dock="Top" x:Name="SettingsSearchBar"
+            
+            <usercontrols:SearchBar Grid.Column="1" DockPanel.Dock="Top" x:Name="SettingsSearchBar"
                                     VerticalAlignment="Top" HorizontalAlignment="Right"
                                     Width="500"/>
         </Grid>
@@ -145,8 +158,11 @@
             </StackPanel>
         </Grid>
         <Grid>
-            <ContentControl Content="ContentControl"
-                            VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <ContentControl Content="{Binding CurrentSectionViewModel}"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch"
+                            HorizontalContentAlignment="Stretch"
+                            VerticalContentAlignment="Stretch"/>
         </Grid>
     </DockPanel>
 </Window>

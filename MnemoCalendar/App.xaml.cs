@@ -4,6 +4,7 @@ using System.Windows;
 using MnemoCalendar.Data;
 using MnemoCalendar.Helpers;
 using MnemoCalendar.Tests;
+using MnemoCalendar.Views;
 
 namespace MnemoCalendar;
 
@@ -30,7 +31,7 @@ public partial class App : Application
         NormalInitialize();
         // TestInitialize();
 
-        var mainWindow = new MainWindow();
+        var mainWindow = new SettingsWindow();
         mainWindow.Show();
     }
 }
