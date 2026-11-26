@@ -85,7 +85,7 @@
                     </StackPanel>
                 </ToggleButton>
                 <Button x:Name="SettingsButton" Style="{DynamicResource SettingsButtonStyle}"
-                        Margin="0,0,15,0">
+                        Margin="0,0,15,0" Command="{Binding ShowSettingsWindowCommand}">
                     <iconPacks:Material Kind="CogOutline"
                                         Width="35" Height="35"/>
                 </Button>

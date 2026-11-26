@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using MnemoCalendar.ViewModels;
+using System.Windows;
 
 namespace MnemoCalendar
 {
@@ -7,11 +8,7 @@ namespace MnemoCalendar
         public MainWindow()
         {
             InitializeComponent();
-        }
-
-        private void SettingsButton_Click(object sender, RoutedEventArgs e)
-        {
-
+            DataContext = new MainViewModel();
         }
     }
 }

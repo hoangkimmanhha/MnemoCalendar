@@ -24,7 +24,6 @@
     <Resource Include="Assets\Fonts\calibri.ttf" />
     <Resource Include="Assets\Fonts\SVN-Aller.otf" />
     <Resource Include="Assets\Media\icon.png" />
-    <Resource Include="icon.png" />
   </ItemGroup>
 
   <ItemGroup>
