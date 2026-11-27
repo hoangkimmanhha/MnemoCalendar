@@ -22,9 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Assets\Fonts\calibri.ttf" />
-    <Resource Include="Assets\Fonts\SVN-Aller.otf" />
-    <Resource Include="Assets\Media\icon.png" />
+    <Resource Include="Assets\**\*" />
     <Resource Include="icon.png" />
   </ItemGroup>
 
@@ -38,6 +36,12 @@
 	<None Update="mnemo.config.json">
 		<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 	</None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Update="Assets\**\*">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
 </Project>
