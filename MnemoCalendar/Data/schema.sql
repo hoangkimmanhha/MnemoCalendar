@@ -8,6 +8,7 @@ CREATE TABLE IF NOT EXISTS events (
     color_hex TEXT NULL,
     created_at_utc TEXT NOT NULL,
     updated_at_utc TEXT NOT NULL,
+    reminder_minute TEXT NULL,
     CHECK (end_at_utc > start_at_utc)
 );
 

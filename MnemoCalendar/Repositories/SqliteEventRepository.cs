@@ -26,8 +26,8 @@ public class SqliteEventRepository: IEventRepository
         using var command = connection.CreateCommand();
 
         command.CommandText =
-            @"INSERT INTO events(title, description, location, start_at_utc, end_at_utc, color_hex, created_at_utc, updated_at_utc)
-            VALUES ($title, $description, $location, $start_at_utc, $end_at_utc, $color_hex, $created_at_utc, $updated_at_utc);
+            @"INSERT INTO events(title, description, location, start_at_utc, end_at_utc, color_hex, created_at_utc, updated_at_utc, reminder_minute)
+            VALUES ($title, $description, $location, $start_at_utc, $end_at_utc, $color_hex, $created_at_utc, $updated_at_utc, $reminder_minute);
             SELECT last_insert_rowid();";
         command.Parameters.AddWithValue("$title", calendarEvent.Title);
         command.Parameters.AddWithValue("$description", calendarEvent.Description ?? (object)DBNull.Value);
@@ -37,6 +37,7 @@ public class SqliteEventRepository: IEventRepository
         command.Parameters.AddWithValue("$color_hex", calendarEvent.ColorHex ?? (object)DBNull.Value);
         command.Parameters.AddWithValue("$created_at_utc", DateTimeOffset.Now.UtcDateTime.ToString("O"));
         command.Parameters.AddWithValue("$updated_at_utc", DateTimeOffset.Now.UtcDateTime.ToString("O"));
+        command.Parameters.AddWithValue("$reminder_minute", calendarEvent.ReminderMinute ?? (object)DBNull.Value);
 
         long id = Convert.ToInt64(command.ExecuteScalar());
         return id;
@@ -50,7 +51,7 @@ public class SqliteEventRepository: IEventRepository
 
         command.CommandText =
             @"SELECT id, title, description, location, start_at_utc, end_at_utc,
-                    color_hex, created_at_utc, updated_at_utc 
+                    color_hex, created_at_utc, updated_at_utc, reminder_minute
             FROM events
             WHERE id=$id";
         command.Parameters.AddWithValue("$id", id);
@@ -81,7 +82,9 @@ public class SqliteEventRepository: IEventRepository
 
                 UpdatedAtUtc = DateTimeOffset.Parse(reader.GetString(8),
                 CultureInfo.InvariantCulture,
-                DateTimeStyles.RoundtripKind)
+                DateTimeStyles.RoundtripKind),
+
+                ReminderMinute = reader.IsDBNull(9) == false ? reader.GetInt32(9) : null
             };
         } else return null;
     }
@@ -105,8 +108,33 @@ public class SqliteEventRepository: IEventRepository
             var result = new List<CalendarEvent>();
             while (reader.Read())
             {
-                var Id = reader.GetInt32(0);
-                result.Add(GetEventById(Id)!);
+                result.Add(new CalendarEvent
+                {
+                    Id = reader.GetInt32(0),
+                    Title = reader.GetString(1),
+                    Description = reader.IsDBNull(2) == false ? reader.GetString(2) : "",
+                    Location = reader.IsDBNull(3) == false ? reader.GetString(3) : "",
+
+                    StartAt = DateTimeOffset.Parse(reader.GetString(4),
+                    CultureInfo.InvariantCulture,
+                    DateTimeStyles.RoundtripKind).ToLocalTime(),
+
+                    EndAt = DateTimeOffset.Parse(reader.GetString(5),
+                    CultureInfo.InvariantCulture,
+                    DateTimeStyles.RoundtripKind).ToLocalTime(),
+
+                    ColorHex = reader.IsDBNull(6) == false ? reader.GetString(6) : "",
+
+                    CreatedAtUtc = DateTimeOffset.Parse(reader.GetString(7),
+                    CultureInfo.InvariantCulture,
+                    DateTimeStyles.RoundtripKind),
+
+                    UpdatedAtUtc = DateTimeOffset.Parse(reader.GetString(8),
+                    CultureInfo.InvariantCulture,
+                    DateTimeStyles.RoundtripKind),
+
+                    ReminderMinute = reader.IsDBNull(9) == false ? reader.GetInt32(9) : null
+                });
             }
             return result;
         }
@@ -121,6 +149,7 @@ public class SqliteEventRepository: IEventRepository
         command.CommandText =
             @"SELECT * FROM events
             WHERE title LIKE $query OR description LIKE $query OR location LIKE $query;";
+        command.Parameters.AddWithValue("$query", $"%{query}%");
 
         var reader = command.ExecuteReader();
 
@@ -129,8 +158,33 @@ public class SqliteEventRepository: IEventRepository
             var result = new List<CalendarEvent>();
             while (reader.Read())
             {
-                var Id = reader.GetInt32(0);
-                result.Add(GetEventById(Id)!);
+                result.Add(new CalendarEvent
+                {
+                    Id = reader.GetInt32(0),
+                    Title = reader.GetString(1),
+                    Description = reader.IsDBNull(2) == false ? reader.GetString(2) : "",
+                    Location = reader.IsDBNull(3) == false ? reader.GetString(3) : "",
+
+                    StartAt = DateTimeOffset.Parse(reader.GetString(4),
+                    CultureInfo.InvariantCulture,
+                    DateTimeStyles.RoundtripKind).ToLocalTime(),
+
+                    EndAt = DateTimeOffset.Parse(reader.GetString(5),
+                    CultureInfo.InvariantCulture,
+                    DateTimeStyles.RoundtripKind).ToLocalTime(),
+
+                    ColorHex = reader.IsDBNull(6) == false ? reader.GetString(6) : "",
+
+                    CreatedAtUtc = DateTimeOffset.Parse(reader.GetString(7),
+                    CultureInfo.InvariantCulture,
+                    DateTimeStyles.RoundtripKind),
+
+                    UpdatedAtUtc = DateTimeOffset.Parse(reader.GetString(8),
+                    CultureInfo.InvariantCulture,
+                    DateTimeStyles.RoundtripKind),
+
+                    ReminderMinute = reader.IsDBNull(9) == false ? reader.GetInt32(9) : null
+                });
             }
             return result;
         }
@@ -153,7 +207,8 @@ public class SqliteEventRepository: IEventRepository
                 end_at_utc = $end_at_utc,
                 color_hex = $color_hex,
                 created_at_utc = $created_at_utc,
-                updated_at_utc = $updated_at_utc
+                updated_at_utc = $updated_at_utc,
+                reminder_minute = $reminder_minute
             WHERE id = $id;";
         command.Parameters.AddWithValue("$id", newCalendarEvent.Id);
         command.Parameters.AddWithValue("$title", newCalendarEvent.Title);
@@ -164,6 +219,7 @@ public class SqliteEventRepository: IEventRepository
         command.Parameters.AddWithValue("$color_hex", newCalendarEvent.ColorHex ?? (object)DBNull.Value);
         command.Parameters.AddWithValue("$created_at_utc", newCalendarEvent.CreatedAtUtc.ToString("O"));
         command.Parameters.AddWithValue("$updated_at_utc", DateTimeOffset.Now.UtcDateTime.ToString("O"));
+        command.Parameters.AddWithValue("$reminder_minute", newCalendarEvent.ReminderMinute ?? (object)DBNull.Value);
 
         command.ExecuteNonQuery();
     }
