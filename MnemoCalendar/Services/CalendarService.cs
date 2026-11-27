@@ -3,11 +3,6 @@ using MnemoCalendar.Data;
 using MnemoCalendar.Helpers;
 using MnemoCalendar.Models;
 using MnemoCalendar.Repositories;
-using System;
-using System.Data.OleDb;
-using System.Globalization;
-using System.Windows.Input;
-using System.Windows.Markup;
 
 namespace MnemoCalendar.Services;
 
@@ -76,11 +71,9 @@ public class CalendarService
     /// <summary>
     /// Get a CalendarEvent along with its associated Tags by event ID.
     /// </summary>
-    public CalendarEvent? GetEventTagById(long id)
+    public CalendarEvent? GetEventWithTagsById(long id)
     {
         var eventRepository = new SqliteEventRepository(_db);
-        var tagRepository = new SqliteTagRepository(_db);
-
         var calendarEvent = eventRepository.GetEventById(id);
         if (calendarEvent is null)
             return null;
@@ -89,19 +82,22 @@ public class CalendarService
         connection.Open();
 
         using var command = connection.CreateCommand();
-        command.CommandText = @"SELECT tag_id FROM event_tags WHERE event_id = $event_id;";
+        command.CommandText = @"
+        SELECT t.id, t.name, t.color_hex
+        FROM tags t
+        INNER JOIN event_tags et ON t.id = et.tag_id
+        WHERE et.event_id = $event_id;";
         command.Parameters.AddWithValue("$event_id", id);
 
         using var reader = command.ExecuteReader();
         while (reader.Read())
         {
-            long tagId = reader.GetInt32(0);
-
-            var tag = tagRepository.GetTagById(tagId);
-            if (tag is not null)
+            calendarEvent.Tags.Add(new Tag
             {
-                calendarEvent.Tags.Add(tag);
-            }
+                Id = reader.GetInt32(0),
+                Name = reader.GetString(1),
+                ColorHex = reader.IsDBNull(2) ? null : reader.GetString(2)
+            });
         }
 
         return calendarEvent;

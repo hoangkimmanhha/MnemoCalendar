@@ -21,6 +21,10 @@ public class CalendarEvent
     /// Leave blank
     /// </summary>
     public DateTimeOffset UpdatedAtUtc { get; set; }
+    /// <summary>
+    /// Reminder before this time for each event. Null means don't notify.
+    /// </summary>
+    public int? ReminderMinute { get; set; }
 
     public string Info()
     {
