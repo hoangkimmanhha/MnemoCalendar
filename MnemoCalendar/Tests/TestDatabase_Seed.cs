@@ -100,5 +100,11 @@ public class TestDatabase_Seed
             Console.WriteLine(updatedEvent?.Info());
         }
         else Console.WriteLine("Event ID not found!");
+
+        // Test toast notification.
+        NotificationService.CancelAllScheduledEventNotification();
+        Console.Write("EventID to show toast: ");
+        var id = Convert.ToInt32(Console.ReadLine());
+        NotificationService.ScheduleEventNotification(calendarService.GetEventWithTagsById(id)!);
     }
 }
