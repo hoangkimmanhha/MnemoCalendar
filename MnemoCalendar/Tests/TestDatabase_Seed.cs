@@ -1,10 +1,9 @@
-using System.IO;
-using System.Text.Json;
 using MnemoCalendar.Helpers;
-using MnemoCalendar.Data;
 using MnemoCalendar.Models;
 using MnemoCalendar.Repositories;
 using MnemoCalendar.Services;
+using System.IO;
+using System.Text.Json;
 
 namespace MnemoCalendar.Tests;
 
@@ -40,7 +39,8 @@ public class TestDatabase_Seed
         foreach (var calendarEv in sampleEvents)
         {
             long? createdId = calendarService.CreateEventTag(calendarEv);
-            Console.WriteLine($"Added event [{createdId}]: {calendarEv.Title} with tags: {string.Join(", ", calendarEv.Tags.Select(x => x.Name))}");
+            string reminderText = calendarEv.ReminderMinute.HasValue ? $"{calendarEv.ReminderMinute}m" : "None";
+            Console.WriteLine($"Added event [{createdId}]: {calendarEv.Title} | Reminder: {reminderText} | Tags: {string.Join(", ", calendarEv.Tags.Select(x => x.Name))}");
         }
 
         // Show information of all available tags.
@@ -52,21 +52,21 @@ public class TestDatabase_Seed
             Console.WriteLine($"Tag [{tag.Id}]: {tag.Name}\tColor:{tag.ColorHex}");
         }
 
-        // Test edit title/description/location/tag (once at a time).
+        // Test edit title/description/location/tag/reminder (once at a time).
         Console.Write("Edit ID? ");
         var editId = Convert.ToInt32(Console.ReadLine());
 
-        var toEdit = calendarService.GetEventTagById(editId);
+        var toEdit = calendarService.GetEventWithTagsById(editId);
         if (toEdit != null)
         {
             // Show event information.
             Console.WriteLine(toEdit.Info());
 
             // Edit table.
-            Console.WriteLine("\nWhat to edit? (0~3)\n(0) Title\n(1) Description\n(2) Location\n(3) Tags");
+            Console.WriteLine("\nWhat to edit? (0~4)\n(0) Title\n(1) Description\n(2) Location\n(3) Tags\n(4) ReminderMinute");
             var fieldToEdit = Convert.ToInt32(Console.ReadLine());
 
-            Console.Write("New value (split by comma if edit Tags)? ");
+            Console.Write("New value (split by comma if edit Tags, leave blank for null ReminderMinute)? ");
             var newValue = Console.ReadLine() ?? string.Empty;
 
             switch (fieldToEdit)
@@ -82,19 +82,23 @@ public class TestDatabase_Seed
                     break;
                 case 3:
                     toEdit.Tags = newValue
-                        .Split(',')
+                        .Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries)
                         .Select(x => new Tag { Name = x })
                         .ToList();
+                    break;
+                case 4:
+                    toEdit.ReminderMinute = string.IsNullOrWhiteSpace(newValue)
+                        ? null
+                        : Convert.ToInt32(newValue);
                     break;
             }
 
             calendarService.UpdateEventTag(toEdit);
 
-            var updatedEvent = calendarService.GetEventTagById(editId);
+            var updatedEvent = calendarService.GetEventWithTagsById(editId);
             Console.WriteLine("NEW:");
             Console.WriteLine(updatedEvent?.Info());
         }
         else Console.WriteLine("Event ID not found!");
-
     }
 }
