@@ -3,10 +3,216 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+        xmlns:usercontrols="clr-namespace:MnemoCalendar.Views.UserControls"
         xmlns:local="clr-namespace:MnemoCalendar"
         mc:Ignorable="d"
-        Title="Mnemo Calendar" Height="450" Width="800">
-    <Grid>
+        Title="Mnemo Calendar" Height="700" Width="1000"
+        MinWidth="915" MinHeight="450"
+        Icon="/Assets/Media/icon.png">
+    <Window.Resources>
+        <Storyboard x:Key="CollapseMenu">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="menu" Storyboard.TargetProperty="(FrameworkElement.Width)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00.2000000" Value="85"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="ExpandMenu">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="menu" Storyboard.TargetProperty="(FrameworkElement.Width)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00.2000000" Value="250"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </Window.Resources>
+    <DockPanel>
+        <Grid x:Name="title" DockPanel.Dock="Top" Height="60"
+              Background="{DynamicResource TopBarGradientBackground}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1.8 *"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition Width="1.2*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                <ToggleButton Style="{StaticResource NormalToggleButtonStyle}" x:Name="MenuButton"
+                              VerticalAlignment="Center" HorizontalAlignment="Left"
+                              Width="60" Height="50"
+                              Margin="0,5,10,5" Padding="0">
+                    <iconPacks:PackIconMaterial Kind="Menu"
+                                                Width="30" Height="30"
+                                                Foreground="{StaticResource ResourceKey=ForegroundColor}" RenderTransformOrigin="0.488,0.783"/>
+                    <ToggleButton.Triggers>
+                        <EventTrigger RoutedEvent="ToggleButton.Checked">
+                            <BeginStoryboard Storyboard="{StaticResource CollapseMenu}"/>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="ToggleButton.Unchecked">
+                            <BeginStoryboard Storyboard="{StaticResource ExpandMenu}"/>
+                        </EventTrigger>
+                    </ToggleButton.Triggers>
+                </ToggleButton>
 
-    </Grid>
+                <Border Width="30" Height="30" CornerRadius="5"
+                        Margin="0,0,10,0">
+                    <Border.Background>
+                        <ImageBrush ImageSource="/Assets/Media/icon.png" Stretch="UniformToFill" />
+                    </Border.Background>
+                </Border>
+
+                <TextBlock FontFamily="{StaticResource SystemFont}" FontSize="{StaticResource FontSizeTitle}" FontWeight="Bold"
+                           VerticalAlignment="Center"
+                           Text="Mnemo Calendar"
+                           Foreground="{StaticResource ForegroundColor}"/>
+            </StackPanel>
+            <TextBlock Grid.Column="1" Style="{StaticResource NormalTextStyle}"
+                       Text="Nov, 2026"
+                       FontSize="25"/>
+            <StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button Style="{DynamicResource RoundedButtonStyle}"
+                        x:Name="JumpTodayButton" Content="Today"
+                        BorderThickness=".7" BorderBrush="{DynamicResource ForegroundColor}"
+                        Height="40" Padding="20,0" Margin="0,0,15,0"
+                        FontSize="{StaticResource FontSizeRegular}"/>
+                <ToggleButton Style="{DynamicResource RoundedToggleButtonStyle}"
+                              x:Name="SwitchViewButton"
+                              Foreground="{DynamicResource ForegroundColor}"
+                              BorderThickness=".7" BorderBrush="{DynamicResource ForegroundColor}"
+                              Height="40" Padding="15,0" Margin="0,0,15,0">
+                    <StackPanel Orientation="Horizontal">
+                        <iconPacks:Material Kind="ViewWeekOutline"
+                                            Width="25" Height="25"/>
+                        <Border Background="{DynamicResource ForegroundColor}"
+                                Width="1.5" Margin="5,1"/>
+                        <iconPacks:Material Kind="ViewDayOutline"
+                    Width="25" Height="25"/>
+                    </StackPanel>
+                </ToggleButton>
+                <Button x:Name="SettingsButton" Style="{DynamicResource SettingsButtonStyle}"
+                        Margin="0,0,15,0">
+                    <iconPacks:Material Kind="CogOutline"
+                                        Width="35" Height="35"/>
+                </Button>
+            </StackPanel>
+        </Grid>
+        <Grid x:Name="menu" DockPanel.Dock="Left" Width="250"
+              Background="{DynamicResource LeftMenuGradientBackground}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="80"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="150"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Button Grid.Row="0" Style="{DynamicResource BaseButtonStyle}" x:Name="CreateButton"
+                    Height="65"
+                    Margin="8" Padding="0"
+                    VerticalAlignment="Center" HorizontalContentAlignment="Left"
+                    Background="{DynamicResource PrimaryColor}"
+                    Foreground="{DynamicResource SurfaceColor}" RenderTransformOrigin="0.5,0.5">
+                <StackPanel Orientation="Horizontal">
+                    <iconPacks:PackIconMaterial Kind="Plus"
+                                                VerticalAlignment="Center"
+                                                Width="30" Height="30"
+                                                Margin="20,0,23,0" Padding="0"/>
+                    <TextBlock VerticalAlignment="Center"
+                               Text="Create" FontSize="{StaticResource FontSizeTitle}"/>
+                    <iconPacks:PackIconMaterial Kind="MenuDown"
+                                                VerticalAlignment="Center"
+                                                Margin="20,5,0,0"
+                                                Width="20" Height="20"/>
+                </StackPanel>
+                <Button.Triggers>
+                    <EventTrigger RoutedEvent="PreviewMouseLeftButtonDown">
+                        <BeginStoryboard Storyboard="{StaticResource ExpandMenu}"/>
+                    </EventTrigger>
+                </Button.Triggers>
+            </Button>
+            <Border Height="1"
+                    VerticalAlignment="Bottom"
+                    Background="Gray" 
+                    Margin="12,0"/> 
+            <usercontrols:SearchBar Grid.Row="1" x:Name="SearchBar"
+                                    VerticalAlignment="Top"
+                                    Margin="8,0,8,0"/>
+            <ListBox Grid.Row="1" Style="{DynamicResource ResultListBoxStyle}"
+                     d:ItemsSource="{d:SampleData ItemCount=5}"
+                     Margin="8,60,8,10" Padding="12,8"/>
+            <Border Grid.Row="1" Height="1"
+                    VerticalAlignment="Bottom"
+                    Background="Gray" 
+                    Margin="12,0"/>
+            <GroupBox Grid.Row="2" Header="Showing tags:" FontFamily="{StaticResource DescriptionFont}"
+                      Foreground="{DynamicResource ForegroundColor}"
+                      BorderThickness="0"
+                      Margin="8,10,8,10">
+                <ListBox Style="{DynamicResource ResultListBoxStyle}"
+                         d:ItemsSource="{d:SampleData ItemCount=5}"
+                          Padding="3"/>
+            </GroupBox>
+            
+            <Border Grid.Row="2" Height="1"
+                    VerticalAlignment="Bottom"
+                    Background="Gray" 
+                    Margin="12,0"/>
+            <TextBlock Grid.Row="3" Style="{DynamicResource NormalTextStyle}"
+                       VerticalAlignment="Top" HorizontalAlignment="Left"
+                       Text="Good evening!"
+                       Margin="20,10,20,0"/>
+            <TextBlock Grid.Row="3" Style="{DynamicResource NormalTextStyle}"
+                       FontSize="40"
+                       Text="22:37"
+                       VerticalAlignment="Top" HorizontalAlignment="Left"
+                       Margin="20,40,20,20"/>
+            <TextBlock Grid.Row="3" Style="{DynamicResource NormalTextStyle}"
+                       Text="Monday, Nov 23, 2026"
+                       VerticalAlignment="Top" HorizontalAlignment="Left"
+                       Margin="20,100,20,0"/>
+        </Grid>
+        <Grid x:Name="main" Background="{DynamicResource BackgroundColor}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="36"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Text="Mon" Style="{StaticResource NormalTextStyle}"/>
+                <TextBlock Grid.Column="1" Text="Tue" Style="{StaticResource NormalTextStyle}"/>
+                <TextBlock Grid.Column="2" Text="Wed" Style="{StaticResource NormalTextStyle}"/>
+                <TextBlock Grid.Column="3" Text="Thu" Style="{StaticResource NormalTextStyle}"/>
+                <TextBlock Grid.Column="4" Text="Fri" Style="{StaticResource NormalTextStyle}"/>
+                <TextBlock Grid.Column="5" Text="Sat" Style="{StaticResource NormalTextStyle}"/>
+                <TextBlock Grid.Column="6" Text="Sun" Style="{StaticResource NormalTextStyle}" Foreground="#FFAE2929"/>
+
+                <Border Grid.Column="0" Grid.ColumnSpan="7"
+                        VerticalAlignment="Bottom"
+                        Height="1"
+                        Background="Gray"
+                        Margin="12,0"/>
+            </Grid>
+
+            <ItemsControl Grid.Row="1" ItemsSource="{Binding DaysInMonth}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <UniformGrid Columns="7"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Border BorderBrush="{DynamicResource SecondaryColor}" BorderThickness="0.5" Padding="6">
+                            <StackPanel>
+                                <TextBlock Text="{Binding DayNumber}" FontWeight="SemiBold"/>
+                                <!-- Put events here -->
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </Grid>
+    </DockPanel>
 </Window>

@@ -8,5 +8,10 @@ namespace MnemoCalendar
         {
             InitializeComponent();
         }
+
+        private void SettingsButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

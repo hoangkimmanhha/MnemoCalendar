@@ -26,6 +26,9 @@ public class CalendarEvent
     /// </summary>
     public int? ReminderMinute { get; set; }
 
+    /// <summary>
+    /// Use to print information of a CalendarEvent out of console.
+    /// </summary>
     public string Info()
     {
         string tagsText = Tags is { Count: > 0 }
