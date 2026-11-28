@@ -1,0 +1,38 @@
+﻿<UserControl x:Class="MnemoCalendar.Views.UserControls.MiniClock"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MnemoCalendar.Views.UserControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="150" d:DesignWidth="85">
+    <Grid>
+        <TextBlock Style="{StaticResource NormalTextStyle}"
+       FontSize="40"
+       Text="{Binding CurrentTime, StringFormat='{}{0:HH}'}"
+       VerticalAlignment="Top" HorizontalAlignment="Left"
+       Margin="20,5,0,0"/>
+        <TextBlock Style="{StaticResource NormalTextStyle}"
+       FontSize="40"
+       Text="{Binding CurrentTime, StringFormat='{}{0:mm}'}"
+       VerticalAlignment="Top" HorizontalAlignment="Left"
+       Margin="20,50,0,0"/>
+        <TextBlock Style="{StaticResource NormalTextStyle}"
+                   Text=". ." FontSize="40"
+                   HorizontalAlignment="Center" VerticalAlignment="Top"
+                   Margin="0,15,0,0"
+                   Visibility="{Binding DotVisibility}"/>
+        <TextBlock Style="{StaticResource NormalTextStyle}"
+       Text="{Binding CurrentTime, StringFormat='{}{0:MMM dd}', ConverterCulture='en-US'}"
+       VerticalAlignment="Top" HorizontalAlignment="Left"
+       Margin="10,100,0,0"/>
+        <Border Width="50" Height="50"
+        HorizontalAlignment="Center"
+        VerticalAlignment="Top"
+        Margin="0,125,0,0">
+            <Border.Background>
+                <ImageBrush ImageSource="{Binding TimeIconPath}" Stretch="UniformToFill" />
+            </Border.Background>
+        </Border>
+    </Grid>
+</UserControl>
