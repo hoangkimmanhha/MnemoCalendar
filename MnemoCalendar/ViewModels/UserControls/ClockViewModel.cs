@@ -11,10 +11,12 @@ public partial class ClockViewModel : ObservableObject
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(Greeting))]
     [NotifyPropertyChangedFor(nameof(TimeIconPath))]
+    [NotifyPropertyChangedFor(nameof(DotVisibility))]
     private DateTimeOffset _currentTime = DateTimeOffset.Now;
 
     public string Greeting => GreetingHelper(CurrentTime);
     public string TimeIconPath => IconHelper(CurrentTime);
+    public string DotVisibility => CurrentTime.Millisecond < 500 ? "Visible" : "Collapsed";
 
     public ClockViewModel()
     {
@@ -41,5 +43,4 @@ public partial class ClockViewModel : ObservableObject
         if (hour >= 12) return "/Assets/Media/afternoon.png";
         return "/Assets/Media/morning.png";
     }
-    public void StopClock() => _timer.Stop();
 }
