@@ -22,7 +22,7 @@ public partial class ClockViewModel : ObservableObject
     {
         _timer = new DispatcherTimer
         {
-            Interval = TimeSpan.FromMilliseconds(500)
+            Interval = TimeSpan.FromMilliseconds(100)
         };
         _timer.Tick += (_, _) => {
             CurrentTime = DateTimeOffset.Now;

@@ -26,5 +26,13 @@
        Text="{Binding CurrentTime, StringFormat='{}{0:MMM dd}', ConverterCulture='en-US'}"
        VerticalAlignment="Top" HorizontalAlignment="Left"
        Margin="10,100,0,0"/>
+        <Border Width="50" Height="50"
+        HorizontalAlignment="Center"
+        VerticalAlignment="Top"
+        Margin="0,125,0,0">
+            <Border.Background>
+                <ImageBrush ImageSource="{Binding TimeIconPath}" Stretch="UniformToFill" />
+            </Border.Background>
+        </Border>
     </Grid>
 </UserControl>
