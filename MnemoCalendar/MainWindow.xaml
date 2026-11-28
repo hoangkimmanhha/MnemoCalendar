@@ -16,10 +16,22 @@
             <DoubleAnimationUsingKeyFrames Storyboard.TargetName="menu" Storyboard.TargetProperty="(FrameworkElement.Width)">
                 <EasingDoubleKeyFrame KeyTime="00:00:00.2000000" Value="85"/>
             </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="clock" Storyboard.TargetProperty="(UIElement.Opacity)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00.2000000" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="miniclock" Storyboard.TargetProperty="(UIElement.Opacity)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00.2000000" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
         </Storyboard>
         <Storyboard x:Key="ExpandMenu">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetName="menu" Storyboard.TargetProperty="(FrameworkElement.Width)">
                 <EasingDoubleKeyFrame KeyTime="00:00:00.2000000" Value="250"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="clock" Storyboard.TargetProperty="(UIElement.Opacity)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00.2000000" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="miniclock" Storyboard.TargetProperty="(UIElement.Opacity)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00.2000000" Value="0"/>
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
     </Window.Resources>
@@ -126,7 +138,7 @@
             <Border Height="1"
                     VerticalAlignment="Bottom"
                     Background="Gray" 
-                    Margin="12,0"/> 
+                    Margin="12,0"/>
             <usercontrols:SearchBar Grid.Row="1" x:Name="SearchBar"
                                     VerticalAlignment="Top"
                                     Margin="8,0,8,0"/>
@@ -145,12 +157,13 @@
                          d:ItemsSource="{d:SampleData ItemCount=5}"
                           Padding="3"/>
             </GroupBox>
-            
+
             <Border Grid.Row="2" Height="1"
                     VerticalAlignment="Bottom"
                     Background="Gray" 
                     Margin="12,0"/>
-            <usercontrols:Clock Grid.Row="3"/>
+            <usercontrols:Clock x:Name="clock" Grid.Row="3"/>
+            <usercontrols:MiniClock x:Name="miniclock" Grid.Row="3" Opacity="0"/>
         </Grid>
         <Grid x:Name="main" Background="{DynamicResource BackgroundColor}">
             <Grid.RowDefinitions>

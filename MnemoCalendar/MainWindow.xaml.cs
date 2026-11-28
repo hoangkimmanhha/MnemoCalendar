@@ -7,10 +7,6 @@ namespace MnemoCalendar
         public MainWindow()
         {
             InitializeComponent();
-        }
-
-        private void SettingsButton_Click(object sender, RoutedEventArgs e)
-        {
 
         }
     }
